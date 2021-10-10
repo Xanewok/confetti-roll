@@ -1,0 +1,15 @@
+{
+  "scripts": {
+    "compile": "truffle compile",
+    "migrate": "truffle migrate"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@openzeppelin/contracts": "^4.3.2",
+    "truffle": "^5.5",
+    "truffle-plugin-verify": "^0.5.24"
+  },
+  "dependencies": {
+    "@truffle/hdwallet-provider": "^1.5.1"
+  }
+}
