@@ -1,0 +1,430 @@
+{
+  "contractName": "ISeederV2",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "getBatch",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "batch",
+          "type": "uint256"
+        }
+      ],
+      "name": "getReqByBatch",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.13+commit.abaa5c0e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getBatch\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"batch\",\"type\":\"uint256\"}],\"name\":\"getReqByBatch\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/ISeederV2.sol\":\"ISeederV2\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":1000},\"remappings\":[]},\"sources\":{\"project:/contracts/ISeederV2.sol\":{\"keccak256\":\"0x1180292d97cd26994c5f478c75b6bd061bf0ad6d55b66a26f545026329edb73e\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://0f71ffb7a4dcc0a5fead32e2203b4343c22ac680d1091f3d10d07d934e4959c8\",\"dweb:/ipfs/QmSYrTr3vAWUDqe3HroDc6xPew5pMUohVHv6GBGCnKki9z\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\n// Originally deployed at https://etherscan.io/address/0x2Ed251752DA7F24F33CFbd38438748BB8eeb44e1\ninterface ISeederV2 {\n    function getBatch() external view returns (uint256);\n    function getReqByBatch(uint256 batch) external view returns (bytes32);\n}\n",
+  "sourcePath": "/home/xanewok/repos/confetti-roll/contract/contracts/ISeederV2.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/ISeederV2.sol",
+    "exportedSymbols": {
+      "ISeederV2": [
+        3833
+      ]
+    },
+    "id": 3834,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 3820,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:23:22"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "ISeederV2",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 3833,
+        "linearizedBaseContracts": [
+          3833
+        ],
+        "name": "ISeederV2",
+        "nameLocation": "165:9:22",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "3b1fee6c",
+            "id": 3825,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getBatch",
+            "nameLocation": "190:8:22",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3821,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "198:2:22"
+            },
+            "returnParameters": {
+              "id": 3824,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3823,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3825,
+                  "src": "224:7:22",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3822,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "224:7:22",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "223:9:22"
+            },
+            "scope": 3833,
+            "src": "181:52:22",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "591c0e1c",
+            "id": 3832,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getReqByBatch",
+            "nameLocation": "247:13:22",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3828,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3827,
+                  "mutability": "mutable",
+                  "name": "batch",
+                  "nameLocation": "269:5:22",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3832,
+                  "src": "261:13:22",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3826,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "261:7:22",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "260:15:22"
+            },
+            "returnParameters": {
+              "id": 3831,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3830,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3832,
+                  "src": "299:7:22",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 3829,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "299:7:22",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "298:9:22"
+            },
+            "scope": 3833,
+            "src": "238:70:22",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 3834,
+        "src": "155:155:22",
+        "usedErrors": []
+      }
+    ],
+    "src": "32:279:22"
+  },
+  "legacyAST": {
+    "absolutePath": "project:/contracts/ISeederV2.sol",
+    "exportedSymbols": {
+      "ISeederV2": [
+        3833
+      ]
+    },
+    "id": 3834,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 3820,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:23:22"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "ISeederV2",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 3833,
+        "linearizedBaseContracts": [
+          3833
+        ],
+        "name": "ISeederV2",
+        "nameLocation": "165:9:22",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "3b1fee6c",
+            "id": 3825,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getBatch",
+            "nameLocation": "190:8:22",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3821,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "198:2:22"
+            },
+            "returnParameters": {
+              "id": 3824,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3823,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3825,
+                  "src": "224:7:22",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3822,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "224:7:22",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "223:9:22"
+            },
+            "scope": 3833,
+            "src": "181:52:22",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "591c0e1c",
+            "id": 3832,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getReqByBatch",
+            "nameLocation": "247:13:22",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3828,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3827,
+                  "mutability": "mutable",
+                  "name": "batch",
+                  "nameLocation": "269:5:22",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3832,
+                  "src": "261:13:22",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3826,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "261:7:22",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "260:15:22"
+            },
+            "returnParameters": {
+              "id": 3831,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3830,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3832,
+                  "src": "299:7:22",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 3829,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "299:7:22",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "298:9:22"
+            },
+            "scope": 3833,
+            "src": "238:70:22",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 3834,
+        "src": "155:155:22",
+        "usedErrors": []
+      }
+    ],
+    "src": "32:279:22"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.13+commit.abaa5c0e.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.6",
+  "updatedAt": "2022-04-05T21:18:30.444Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

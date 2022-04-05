@@ -1,0 +1,307 @@
+{
+  "contractName": "ISeedStorage",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "key",
+          "type": "bytes32"
+        }
+      ],
+      "name": "getRandomness",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.13+commit.abaa5c0e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"key\",\"type\":\"bytes32\"}],\"name\":\"getRandomness\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/ISeedStorage.sol\":\"ISeedStorage\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":1000},\"remappings\":[]},\"sources\":{\"project:/contracts/ISeedStorage.sol\":{\"keccak256\":\"0x2e1ee2b85b684509138c235208d5a134a64118eb26c1278bee973a334a946d1a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://a1015c856626b6c32c95d5da18db5c46cbbea589ce3816afd6146179a9416c7b\",\"dweb:/ipfs/QmVExrTEtujTRRNd9rRbWMwZbqCKVQfF5xpeh7Mb9pRTCf\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\n// Originally deployed at https://etherscan.io/address/0xFc8f72Ac252d5409ba427629F0F1bab113a7492F\ninterface ISeedStorage {\n    function getRandomness(bytes32 key) external view returns (uint256);\n}\n",
+  "sourcePath": "/home/xanewok/repos/confetti-roll/contract/contracts/ISeedStorage.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/ISeedStorage.sol",
+    "exportedSymbols": {
+      "ISeedStorage": [
+        3818
+      ]
+    },
+    "id": 3819,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 3810,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:23:21"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "ISeedStorage",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 3818,
+        "linearizedBaseContracts": [
+          3818
+        ],
+        "name": "ISeedStorage",
+        "nameLocation": "165:12:21",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "05b19402",
+            "id": 3817,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getRandomness",
+            "nameLocation": "193:13:21",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3813,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3812,
+                  "mutability": "mutable",
+                  "name": "key",
+                  "nameLocation": "215:3:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3817,
+                  "src": "207:11:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 3811,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "207:7:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "206:13:21"
+            },
+            "returnParameters": {
+              "id": 3816,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3815,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3817,
+                  "src": "243:7:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3814,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "243:7:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "242:9:21"
+            },
+            "scope": 3818,
+            "src": "184:68:21",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 3819,
+        "src": "155:99:21",
+        "usedErrors": []
+      }
+    ],
+    "src": "32:223:21"
+  },
+  "legacyAST": {
+    "absolutePath": "project:/contracts/ISeedStorage.sol",
+    "exportedSymbols": {
+      "ISeedStorage": [
+        3818
+      ]
+    },
+    "id": 3819,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 3810,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:23:21"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "ISeedStorage",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 3818,
+        "linearizedBaseContracts": [
+          3818
+        ],
+        "name": "ISeedStorage",
+        "nameLocation": "165:12:21",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "05b19402",
+            "id": 3817,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getRandomness",
+            "nameLocation": "193:13:21",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3813,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3812,
+                  "mutability": "mutable",
+                  "name": "key",
+                  "nameLocation": "215:3:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3817,
+                  "src": "207:11:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 3811,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "207:7:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "206:13:21"
+            },
+            "returnParameters": {
+              "id": 3816,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3815,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3817,
+                  "src": "243:7:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3814,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "243:7:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "242:9:21"
+            },
+            "scope": 3818,
+            "src": "184:68:21",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 3819,
+        "src": "155:99:21",
+        "usedErrors": []
+      }
+    ],
+    "src": "32:223:21"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.13+commit.abaa5c0e.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.6",
+  "updatedAt": "2022-04-05T21:18:30.443Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
