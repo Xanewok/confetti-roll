@@ -290,6 +290,8 @@ contract ConfettiRoll is AccessControlEnumerable, Ownable, Pausable {
     function joinGame(bytes32 gameId) public whenNotPaused {
         Game memory game = games[gameId];
         require(!isGameFinished(gameId), "Game already finished");
+        uint256 seed = getSeed(game.roundNum);
+        require(seed == 0, "Game already seeded");
         require(!pendingGames[msg.sender].contains(gameId), "Already joined");
         require(
             games[gameId].participants.length <= (FEE_PRECISION / betTip),
