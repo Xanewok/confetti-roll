@@ -5,4 +5,5 @@ pragma solidity ^0.8.0;
 interface ISeederV2 {
     function getBatch() external view returns (uint256);
     function getReqByBatch(uint256 batch) external view returns (bytes32);
+    function getNextAvailableBatch() external view returns (uint256);
 }

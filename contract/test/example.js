@@ -5,6 +5,9 @@ const TestSeederV2 = artifacts.require("TestSeederV2");
 const TestSeedStorage = artifacts.require("TestSeedStorage");
 const ConfettiRoll = artifacts.require("ConfettiRoll");
 
+// Returns a current timestamp in *seconds* - similar to `block.timestamp`.
+const timestamp = () => Math.trunc(new Date().getTime() / 1000);
+
 async function mintAndApprove(address, amount) {
   const confetti = await TestConfetti.deployed();
   await confetti.burn(await confetti.balanceOf(address), { from: address });
@@ -47,7 +50,7 @@ async function setRound(roundNum) {
 }
 
 contract("ConfettiRoll", (accounts) => {
-  before(async () => {
+  beforeEach(async () => {
     for (const account of accounts.slice(0, 4)) {
       await mintAndApprove(account, "1000000000000000000000"); // 1000 $CFTI
       await balanceOf(account);
@@ -55,6 +58,10 @@ contract("ConfettiRoll", (accounts) => {
   });
 
   beforeEach(async () => {
+    const seederV2 = await TestSeederV2.deployed();
+    // Mark seed as ready in 5 minutes (to work around front-running security measures)
+    await seederV2.setLastBatchTimestamp(timestamp() + 5 * 60);
+
     await setRound(0);
     await setSeedForRound(0, 0);
   });
@@ -126,14 +133,7 @@ contract("ConfettiRoll", (accounts) => {
     }
   });
 
-  contract("ConfettiRoll - A", accounts => {
-    before(async () => {
-      for (const account of accounts.slice(0, 4)) {
-        await mintAndApprove(account, "1000000000000000000000"); // 1000 $CFTI
-        await balanceOf(account);
-      }
-    });
-
+  contract("ConfettiRoll", accounts => {
     it("asserts that games can't be seeded prior to creation", async () => {
       await setRound(0x539);
       const roll = await ConfettiRoll.deployed();
@@ -144,6 +144,22 @@ contract("ConfettiRoll", (accounts) => {
       await assert.rejects(() => roll.joinGlobalGame());
 
       await setSeedForRound(roundNum, 0);
+      await roll.joinGlobalGame();
+    });
+  });
+
+  contract("ConfettiRoll", accounts => {
+    it("asserts that game sign-ups are closed before the seed may be ready", async () => {
+      const seederV2 = await TestSeederV2.deployed();
+      const roll = await ConfettiRoll.deployed();
+      const roundNum = await roll.currentRound();
+
+      // Seed ready in 5 seconds - to prevent possible front-running we should
+      // disallow joining games
+      await seederV2.setLastBatchTimestamp(timestamp() + 5);
+      await assert.rejects(() => roll.joinGlobalGame());
+      // But 1 minute prior should be safe
+      await seederV2.setLastBatchTimestamp(timestamp() + 61);
       await roll.joinGlobalGame();
     });
   });

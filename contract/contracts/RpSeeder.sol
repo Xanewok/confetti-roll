@@ -22,6 +22,10 @@ contract RpSeeder is ISeederV2, ISeedStorage {
         return seederV2.getReqByBatch(batch);
     }
 
+    function getNextAvailableBatch() external override view returns (uint256) {
+        return ISeederV2(seederV2).getNextAvailableBatch();
+    }
+
     function getRandomness(bytes32 key) external override view returns (uint256) {
         return seedStorage.getRandomness(key);
     }

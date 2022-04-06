@@ -290,8 +290,15 @@ contract ConfettiRoll is AccessControlEnumerable, Ownable, Pausable {
     function joinGame(bytes32 gameId) public whenNotPaused {
         Game memory game = games[gameId];
         require(!isGameFinished(gameId), "Game already finished");
+        // Mitigate possible front-running - close the game sign-ups about a minute
+        // before the seeder can request randomness. The RP seeder is pre-configured
+        // to require 3 block confirmations, so 60 seconds makes sense (< 3 * 14s)
         uint256 seed = getSeed(game.roundNum);
         require(seed == 0, "Game already seeded");
+        require(
+            seeder.getNextAvailableBatch() > (block.timestamp + 60),
+            "Seed imminent; sign-up is closed"
+        );
         require(!pendingGames[msg.sender].contains(gameId), "Already joined");
         require(
             games[gameId].participants.length <= (FEE_PRECISION / betTip),
