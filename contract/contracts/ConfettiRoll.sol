@@ -32,6 +32,8 @@ contract ConfettiRoll is AccessControlEnumerable, Ownable, Pausable {
     uint256 public maxStartingRoll = 1000;
     uint256 public defaultStartingRoll = 100;
 
+    uint256 public defaultMaxParticipants = 100;
+
     bytes32 public constant TREASURY_ROLE = keccak256("TREASURY_ROLE");
 
     struct Game {
@@ -39,6 +41,7 @@ contract ConfettiRoll is AccessControlEnumerable, Ownable, Pausable {
         uint256 poolBet;
         address[] participants;
         uint256 startingRoll;
+        uint256 maxParticipants;
     }
 
     struct GameResult {
@@ -236,12 +239,14 @@ contract ConfettiRoll is AccessControlEnumerable, Ownable, Pausable {
     /// @notice Create a new game
     /// @param initializer needs to be an address of the contract or the sender
     /// @param poolBet The amount of money that the player enters with. Use 18 decimals, just like for $CFTI
+    /// @param maxParticipants The maximum number of players that can join the game
     /// @param startingRoll The upper roll that the game begins with
     /// @param roundNum The round when the game will be played. Must be bigger than the current round
     function createGame(
         address initializer,
         uint256 poolBet,
         uint256 startingRoll,
+        uint256 maxParticipants,
         uint256 roundNum
     ) public whenNotPaused returns (bytes32) {
         if (startingRoll == 0) {
@@ -249,6 +254,9 @@ contract ConfettiRoll is AccessControlEnumerable, Ownable, Pausable {
         }
         if (poolBet == 0) {
             poolBet = defaultBet;
+        }
+        if (maxParticipants < 2) {
+            maxParticipants = defaultMaxParticipants;
         }
         uint256 seed = getSeed(roundNum);
         require(seed == 0, "Game already seeded");
@@ -270,7 +278,8 @@ contract ConfettiRoll is AccessControlEnumerable, Ownable, Pausable {
             initializer == msg.sender ||
                 (initializer == address(this) &&
                     poolBet == defaultBet &&
-                    startingRoll == defaultStartingRoll)
+                    startingRoll == defaultStartingRoll &&
+                    maxParticipants == defaultMaxParticipants)
         );
         bytes32 gameId = calcGameId(initializer, roundNum);
         require(!isGameFinished(gameId), "Game already finished");
@@ -279,6 +288,7 @@ contract ConfettiRoll is AccessControlEnumerable, Ownable, Pausable {
             poolBet: poolBet,
             roundNum: roundNum,
             startingRoll: startingRoll,
+            maxParticipants: maxParticipants,
             participants: new address[](0)
         });
 
@@ -289,6 +299,7 @@ contract ConfettiRoll is AccessControlEnumerable, Ownable, Pausable {
     /// @notice Join the given game. Needs $CFTI approval as the player needs to deposit the pool bet in order to play.
     function joinGame(bytes32 gameId) public whenNotPaused {
         Game memory game = games[gameId];
+        require(game.startingRoll > 0, "Game doesn't exist yet");
         require(!isGameFinished(gameId), "Game already finished");
         // Mitigate possible front-running - close the game sign-ups about a minute
         // before the seeder can request randomness. The RP seeder is pre-configured
@@ -301,7 +312,8 @@ contract ConfettiRoll is AccessControlEnumerable, Ownable, Pausable {
         );
         require(!pendingGames[msg.sender].contains(gameId), "Already joined");
         require(
-            games[gameId].participants.length <= (FEE_PRECISION / betTip),
+            games[gameId].participants.length < game.maxParticipants &&
+                games[gameId].participants.length <= (FEE_PRECISION / betTip),
             "Too many players"
         );
 
@@ -323,6 +335,7 @@ contract ConfettiRoll is AccessControlEnumerable, Ownable, Pausable {
                 address(this),
                 defaultBet,
                 defaultStartingRoll,
+                defaultMaxParticipants,
                 currentRound()
             );
         }

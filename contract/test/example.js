@@ -117,7 +117,8 @@ contract("ConfettiRoll", (accounts) => {
 
     const betSize = "10000000000000000000"; // 10 $CFTI
     const startingRoll = 420;
-    await roll.createGame(accounts[0], betSize, startingRoll, roundNum);
+    const maxParticipants = 10;
+    await roll.createGame(accounts[0], betSize, startingRoll, maxParticipants, roundNum);
 
     const gameId = await roll.calcGameId(accounts[0], roundNum);
     await roll.joinGame(gameId, { from: accounts[0] });
@@ -163,4 +164,26 @@ contract("ConfettiRoll", (accounts) => {
       await roll.joinGlobalGame();
     });
   });
+
+  contract("ConfettiRoll", accounts => {
+    it("asserts that game max participants limit is enforced", async () => {
+      const seederV2 = await TestSeederV2.deployed();
+      const roll = await ConfettiRoll.deployed();
+      const roundNum = await roll.currentRound();
+
+      const betSize = "10000000000000000000"; // 10 $CFTI
+      const startingRoll = 100;
+      const maxParticipants = 2;
+      await roll.createGame(accounts[0], betSize, startingRoll, maxParticipants, roundNum);
+      const gameId = await roll.calcGameId(accounts[0], roundNum);
+
+      await roll.joinGame(gameId, { from: accounts[0] })
+      await roll.joinGame(gameId, { from: accounts[1] })
+      await assert.rejects(() => roll.joinGame(gameId, { from: accounts[2] }));
+
+      const game = await roll.getGame(gameId);
+      assert.equal(game.participants.length, maxParticipants);
+    });
+  });
+
 });

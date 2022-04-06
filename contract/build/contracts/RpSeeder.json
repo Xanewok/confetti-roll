@@ -82,11 +82,11 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.13+commit.abaa5c0e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"seederV2_\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"seedStorage_\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"getBatch\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getNextAvailableBatch\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"key\",\"type\":\"bytes32\"}],\"name\":\"getRandomness\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"batch\",\"type\":\"uint256\"}],\"name\":\"getReqByBatch\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"title\":\"Access to the batch seeder used by the Raid Party game\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/RpSeeder.sol\":\"RpSeeder\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":1000},\"remappings\":[]},\"sources\":{\"project:/contracts/ISeedStorage.sol\":{\"keccak256\":\"0x2e1ee2b85b684509138c235208d5a134a64118eb26c1278bee973a334a946d1a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://a1015c856626b6c32c95d5da18db5c46cbbea589ce3816afd6146179a9416c7b\",\"dweb:/ipfs/QmVExrTEtujTRRNd9rRbWMwZbqCKVQfF5xpeh7Mb9pRTCf\"]},\"project:/contracts/ISeederV2.sol\":{\"keccak256\":\"0xd0ce793bdba6daabc1a9f065c0c29e2b6fe0bc33bebc0870d98d71443db432d1\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://b0e1de69fcdc88f4fe512f1f376042ce25d2c7f2bf21d50a1cc74aa01b43a686\",\"dweb:/ipfs/QmWK3nKuYck7g318rRPH48ta4Q1x2b1cemUjE1YSTRevBH\"]},\"project:/contracts/RpSeeder.sol\":{\"keccak256\":\"0x5d6e35fcb6abea533f0c738fb9caf67427c1d010cb28158d066b9ca7c9eee89e\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://16fdf321fa8a5a8f7227eedd7d5ec83f1ecca190746d9c24ddd27ef74aa5d09d\",\"dweb:/ipfs/QmZeE83QRCTMuz5K2tsRYqxUDs32xNmdgevREpkViERKYD\"]}},\"version\":1}",
-  "bytecode": "0x60c060405234801561001057600080fd5b506040516103fa3803806103fa83398101604081905261002f91610062565b6001600160a01b039182166080521660a052610095565b80516001600160a01b038116811461005d57600080fd5b919050565b6000806040838503121561007557600080fd5b61007e83610046565b915061008c60208401610046565b90509250929050565b60805160a0516103336100c7600039600060cb015260008181610156015281816101ec015261028701526103336000f3fe608060405234801561001057600080fd5b506004361061004c5760003560e01c806305b19402146100515780633b1fee6c146100765780633c099fce1461007e578063591c0e1c14610086575b600080fd5b61006461005f3660046102cb565b610099565b60405190815260200160405180910390f35b610064610152565b6100646101e8565b6100646100943660046102cb565b610255565b6040517f05b19402000000000000000000000000000000000000000000000000000000008152600481018290526000907f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff16906305b19402906024015b602060405180830381865afa158015610128573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061014c91906102e4565b92915050565b60007f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff16633b1fee6c6040518163ffffffff1660e01b8152600401602060405180830381865afa1580156101bf573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906101e391906102e4565b905090565b60007f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff16633c099fce6040518163ffffffff1660e01b8152600401602060405180830381865afa1580156101bf573d6000803e3d6000fd5b6040517f591c0e1c000000000000000000000000000000000000000000000000000000008152600481018290526000907f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff169063591c0e1c9060240161010b565b6000602082840312156102dd57600080fd5b5035919050565b6000602082840312156102f657600080fd5b505191905056fea2646970667358221220277a6554680cf5dcab9c2e15fe364457ab13526ea34788463eb1a1562a74b06b64736f6c634300080d0033",
-  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061004c5760003560e01c806305b19402146100515780633b1fee6c146100765780633c099fce1461007e578063591c0e1c14610086575b600080fd5b61006461005f3660046102cb565b610099565b60405190815260200160405180910390f35b610064610152565b6100646101e8565b6100646100943660046102cb565b610255565b6040517f05b19402000000000000000000000000000000000000000000000000000000008152600481018290526000907f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff16906305b19402906024015b602060405180830381865afa158015610128573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061014c91906102e4565b92915050565b60007f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff16633b1fee6c6040518163ffffffff1660e01b8152600401602060405180830381865afa1580156101bf573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906101e391906102e4565b905090565b60007f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff16633c099fce6040518163ffffffff1660e01b8152600401602060405180830381865afa1580156101bf573d6000803e3d6000fd5b6040517f591c0e1c000000000000000000000000000000000000000000000000000000008152600481018290526000907f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff169063591c0e1c9060240161010b565b6000602082840312156102dd57600080fd5b5035919050565b6000602082840312156102f657600080fd5b505191905056fea2646970667358221220277a6554680cf5dcab9c2e15fe364457ab13526ea34788463eb1a1562a74b06b64736f6c634300080d0033",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.13+commit.abaa5c0e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"seederV2_\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"seedStorage_\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"getBatch\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getNextAvailableBatch\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"key\",\"type\":\"bytes32\"}],\"name\":\"getRandomness\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"batch\",\"type\":\"uint256\"}],\"name\":\"getReqByBatch\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"title\":\"Access to the batch seeder used by the Raid Party game\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/RpSeeder.sol\":\"RpSeeder\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":1000},\"remappings\":[]},\"sources\":{\"project:/contracts/ISeedStorage.sol\":{\"keccak256\":\"0x2e1ee2b85b684509138c235208d5a134a64118eb26c1278bee973a334a946d1a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://a1015c856626b6c32c95d5da18db5c46cbbea589ce3816afd6146179a9416c7b\",\"dweb:/ipfs/QmVExrTEtujTRRNd9rRbWMwZbqCKVQfF5xpeh7Mb9pRTCf\"]},\"project:/contracts/ISeederV2.sol\":{\"keccak256\":\"0xd0ce793bdba6daabc1a9f065c0c29e2b6fe0bc33bebc0870d98d71443db432d1\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://b0e1de69fcdc88f4fe512f1f376042ce25d2c7f2bf21d50a1cc74aa01b43a686\",\"dweb:/ipfs/QmWK3nKuYck7g318rRPH48ta4Q1x2b1cemUjE1YSTRevBH\"]},\"project:/contracts/RpSeeder.sol\":{\"keccak256\":\"0x72f362aea6bc2c9cdc600b1faa306d06b28d26f8a1670f2459ea6ac524779701\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://938c2a60855f2b56dc1a7b9d09e1c117353e7f273a02353de5d19cc14e5c8e90\",\"dweb:/ipfs/QmW2Dy7zqb7GHp6p5AnzTxho6mKffGdCyfoRdYvrjR2y7f\"]}},\"version\":1}",
+  "bytecode": "0x60c060405234801561001057600080fd5b506040516103fa3803806103fa83398101604081905261002f91610062565b6001600160a01b039182166080521660a052610095565b80516001600160a01b038116811461005d57600080fd5b919050565b6000806040838503121561007557600080fd5b61007e83610046565b915061008c60208401610046565b90509250929050565b60805160a0516103336100c7600039600060cb015260008181610156015281816101ec015261028701526103336000f3fe608060405234801561001057600080fd5b506004361061004c5760003560e01c806305b19402146100515780633b1fee6c146100765780633c099fce1461007e578063591c0e1c14610086575b600080fd5b61006461005f3660046102cb565b610099565b60405190815260200160405180910390f35b610064610152565b6100646101e8565b6100646100943660046102cb565b610255565b6040517f05b19402000000000000000000000000000000000000000000000000000000008152600481018290526000907f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff16906305b19402906024015b602060405180830381865afa158015610128573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061014c91906102e4565b92915050565b60007f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff16633b1fee6c6040518163ffffffff1660e01b8152600401602060405180830381865afa1580156101bf573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906101e391906102e4565b905090565b60007f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff16633c099fce6040518163ffffffff1660e01b8152600401602060405180830381865afa1580156101bf573d6000803e3d6000fd5b6040517f591c0e1c000000000000000000000000000000000000000000000000000000008152600481018290526000907f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff169063591c0e1c9060240161010b565b6000602082840312156102dd57600080fd5b5035919050565b6000602082840312156102f657600080fd5b505191905056fea2646970667358221220bacd33ecb6693511da7192b494f65ca861f5614501299af951562ff657c9814b64736f6c634300080d0033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061004c5760003560e01c806305b19402146100515780633b1fee6c146100765780633c099fce1461007e578063591c0e1c14610086575b600080fd5b61006461005f3660046102cb565b610099565b60405190815260200160405180910390f35b610064610152565b6100646101e8565b6100646100943660046102cb565b610255565b6040517f05b19402000000000000000000000000000000000000000000000000000000008152600481018290526000907f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff16906305b19402906024015b602060405180830381865afa158015610128573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061014c91906102e4565b92915050565b60007f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff16633b1fee6c6040518163ffffffff1660e01b8152600401602060405180830381865afa1580156101bf573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906101e391906102e4565b905090565b60007f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff16633c099fce6040518163ffffffff1660e01b8152600401602060405180830381865afa1580156101bf573d6000803e3d6000fd5b6040517f591c0e1c000000000000000000000000000000000000000000000000000000008152600481018290526000907f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff169063591c0e1c9060240161010b565b6000602082840312156102dd57600080fd5b5035919050565b6000602082840312156102f657600080fd5b505191905056fea2646970667358221220bacd33ecb6693511da7192b494f65ca861f5614501299af951562ff657c9814b64736f6c634300080d0033",
   "immutableReferences": {
-    "3048": [
+    "3076": [
       {
         "length": 32,
         "start": 342
@@ -100,7 +100,7 @@
         "start": 647
       }
     ],
-    "3051": [
+    "3079": [
       {
         "length": 32,
         "start": 203
@@ -1249,29 +1249,29 @@
       "name": "#utility.yul"
     }
   ],
-  "sourceMap": "179:807:16:-:0;;;321:151;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;-1:-1:-1;;;;;384:31:16;;;;;425:40;;;179:807;;14:177:18;93:13;;-1:-1:-1;;;;;135:31:18;;125:42;;115:70;;181:1;178;171:12;115:70;14:177;;;:::o;196:293::-;275:6;283;336:2;324:9;315:7;311:23;307:32;304:52;;;352:1;349;342:12;304:52;375:40;405:9;375:40;:::i;:::-;365:50;;434:49;479:2;468:9;464:18;434:49;:::i;:::-;424:59;;196:293;;;;;:::o;:::-;179:807:16;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
-  "deployedSourceMap": "179:807:16:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;853:131;;;;;;:::i;:::-;;:::i;:::-;;;345:25:18;;;333:2;318:18;853:131:16;;;;;;;478:104;;;:::i;726:121::-;;;:::i;588:132::-;;;;;;:::i;:::-;;:::i;853:131::-;947:30;;;;;;;;345:25:18;;;921:7:16;;947:11;:25;;;;;318:18:18;;947:30:16;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;940:37;853:131;-1:-1:-1;;853:131:16:o;478:104::-;530:7;556:8;:17;;;:19;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;549:26;;478:104;:::o;726:121::-;782:7;808:8;:30;;;:32;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;588:132;684:29;;;;;;;;345:25:18;;;658:7:16;;684:8;:22;;;;;318:18:18;;684:29:16;199:177:18;14:180;73:6;126:2;114:9;105:7;101:23;97:32;94:52;;;142:1;139;132:12;94:52;-1:-1:-1;165:23:18;;14:180;-1:-1:-1;14:180:18:o;748:184::-;818:6;871:2;859:9;850:7;846:23;842:32;839:52;;;887:1;884;877:12;839:52;-1:-1:-1;910:16:18;;748:184;-1:-1:-1;748:184:18:o",
-  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\nimport './ISeederV2.sol';\nimport './ISeedStorage.sol';\n\n/// @title Access to the batch seeder used by the Raid Party game\ncontract RpSeeder is ISeederV2, ISeedStorage {\n    ISeederV2 private immutable seederV2;\n    ISeedStorage private immutable seedStorage;\n\n    constructor(address seederV2_, address seedStorage_) {\n        seederV2 = ISeederV2(seederV2_);\n        seedStorage = ISeedStorage(seedStorage_);\n    }\n\n    function getBatch() external override view returns (uint256) {\n        return seederV2.getBatch();\n    }\n\n    function getReqByBatch(uint256 batch) external override view returns (bytes32) {\n        return seederV2.getReqByBatch(batch);\n    }\n\n    function getNextAvailableBatch() external view returns (uint256) {\n        return seederV2.getNextAvailableBatch();\n    }\n\n    function getRandomness(bytes32 key) external override view returns (uint256) {\n        return seedStorage.getRandomness(key);\n    }\n}\n",
+  "sourceMap": "179:827:16:-:0;;;321:151;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;-1:-1:-1;;;;;384:31:16;;;;;425:40;;;179:827;;14:177:18;93:13;;-1:-1:-1;;;;;135:31:18;;125:42;;115:70;;181:1;178;171:12;115:70;14:177;;;:::o;196:293::-;275:6;283;336:2;324:9;315:7;311:23;307:32;304:52;;;352:1;349;342:12;304:52;375:40;405:9;375:40;:::i;:::-;365:50;;434:49;479:2;468:9;464:18;434:49;:::i;:::-;424:59;;196:293;;;;;:::o;:::-;179:827:16;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "179:827:16:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;873:131;;;;;;:::i;:::-;;:::i;:::-;;;345:25:18;;;333:2;318:18;873:131:16;;;;;;;478:104;;;:::i;726:141::-;;;:::i;588:132::-;;;;;;:::i;:::-;;:::i;873:131::-;967:30;;;;;;;;345:25:18;;;941:7:16;;967:11;:25;;;;;318:18:18;;967:30:16;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;960:37;873:131;-1:-1:-1;;873:131:16:o;478:104::-;530:7;556:8;:17;;;:19;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;549:26;;478:104;:::o;726:141::-;791:7;827:8;817:41;;;:43;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;588:132;684:29;;;;;;;;345:25:18;;;658:7:16;;684:8;:22;;;;;318:18:18;;684:29:16;199:177:18;14:180;73:6;126:2;114:9;105:7;101:23;97:32;94:52;;;142:1;139;132:12;94:52;-1:-1:-1;165:23:18;;14:180;-1:-1:-1;14:180:18:o;748:184::-;818:6;871:2;859:9;850:7;846:23;842:32;839:52;;;887:1;884;877:12;839:52;-1:-1:-1;910:16:18;;748:184;-1:-1:-1;748:184:18:o",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\nimport './ISeederV2.sol';\nimport './ISeedStorage.sol';\n\n/// @title Access to the batch seeder used by the Raid Party game\ncontract RpSeeder is ISeederV2, ISeedStorage {\n    ISeederV2 private immutable seederV2;\n    ISeedStorage private immutable seedStorage;\n\n    constructor(address seederV2_, address seedStorage_) {\n        seederV2 = ISeederV2(seederV2_);\n        seedStorage = ISeedStorage(seedStorage_);\n    }\n\n    function getBatch() external override view returns (uint256) {\n        return seederV2.getBatch();\n    }\n\n    function getReqByBatch(uint256 batch) external override view returns (bytes32) {\n        return seederV2.getReqByBatch(batch);\n    }\n\n    function getNextAvailableBatch() external override view returns (uint256) {\n        return ISeederV2(seederV2).getNextAvailableBatch();\n    }\n\n    function getRandomness(bytes32 key) external override view returns (uint256) {\n        return seedStorage.getRandomness(key);\n    }\n}\n",
   "sourcePath": "/home/xanewok/repos/confetti-roll/contract/contracts/RpSeeder.sol",
   "ast": {
     "absolutePath": "project:/contracts/RpSeeder.sol",
     "exportedSymbols": {
       "ISeedStorage": [
-        3016
+        3044
       ],
       "ISeederV2": [
-        3036
+        3064
       ],
       "RpSeeder": [
-        3121
+        3152
       ]
     },
-    "id": 3122,
+    "id": 3153,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 3038,
+        "id": 3066,
         "literals": [
           "solidity",
           "^",
@@ -1284,11 +1284,11 @@
       {
         "absolutePath": "project:/contracts/ISeederV2.sol",
         "file": "./ISeederV2.sol",
-        "id": 3039,
+        "id": 3067,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 3122,
-        "sourceUnit": 3037,
+        "scope": 3153,
+        "sourceUnit": 3065,
         "src": "57:25:16",
         "symbolAliases": [],
         "unitAlias": ""
@@ -1296,11 +1296,11 @@
       {
         "absolutePath": "project:/contracts/ISeedStorage.sol",
         "file": "./ISeedStorage.sol",
-        "id": 3040,
+        "id": 3068,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 3122,
-        "sourceUnit": 3017,
+        "scope": 3153,
+        "sourceUnit": 3045,
         "src": "83:28:16",
         "symbolAliases": [],
         "unitAlias": ""
@@ -1310,25 +1310,25 @@
         "baseContracts": [
           {
             "baseName": {
-              "id": 3042,
+              "id": 3070,
               "name": "ISeederV2",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 3036,
+              "referencedDeclaration": 3064,
               "src": "200:9:16"
             },
-            "id": 3043,
+            "id": 3071,
             "nodeType": "InheritanceSpecifier",
             "src": "200:9:16"
           },
           {
             "baseName": {
-              "id": 3044,
+              "id": 3072,
               "name": "ISeedStorage",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 3016,
+              "referencedDeclaration": 3044,
               "src": "211:12:16"
             },
-            "id": 3045,
+            "id": 3073,
             "nodeType": "InheritanceSpecifier",
             "src": "211:12:16"
           }
@@ -1337,17 +1337,17 @@
         "contractDependencies": [],
         "contractKind": "contract",
         "documentation": {
-          "id": 3041,
+          "id": 3069,
           "nodeType": "StructuredDocumentation",
           "src": "113:66:16",
           "text": "@title Access to the batch seeder used by the Raid Party game"
         },
         "fullyImplemented": true,
-        "id": 3121,
+        "id": 3152,
         "linearizedBaseContracts": [
-          3121,
-          3016,
-          3036
+          3152,
+          3044,
+          3064
         ],
         "name": "RpSeeder",
         "nameLocation": "188:8:16",
@@ -1355,33 +1355,33 @@
         "nodes": [
           {
             "constant": false,
-            "id": 3048,
+            "id": 3076,
             "mutability": "immutable",
             "name": "seederV2",
             "nameLocation": "258:8:16",
             "nodeType": "VariableDeclaration",
-            "scope": 3121,
+            "scope": 3152,
             "src": "230:36:16",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_ISeederV2_$3036",
+              "typeIdentifier": "t_contract$_ISeederV2_$3064",
               "typeString": "contract ISeederV2"
             },
             "typeName": {
-              "id": 3047,
+              "id": 3075,
               "nodeType": "UserDefinedTypeName",
               "pathNode": {
-                "id": 3046,
+                "id": 3074,
                 "name": "ISeederV2",
                 "nodeType": "IdentifierPath",
-                "referencedDeclaration": 3036,
+                "referencedDeclaration": 3064,
                 "src": "230:9:16"
               },
-              "referencedDeclaration": 3036,
+              "referencedDeclaration": 3064,
               "src": "230:9:16",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ISeederV2_$3036",
+                "typeIdentifier": "t_contract$_ISeederV2_$3064",
                 "typeString": "contract ISeederV2"
               }
             },
@@ -1389,33 +1389,33 @@
           },
           {
             "constant": false,
-            "id": 3051,
+            "id": 3079,
             "mutability": "immutable",
             "name": "seedStorage",
             "nameLocation": "303:11:16",
             "nodeType": "VariableDeclaration",
-            "scope": 3121,
+            "scope": 3152,
             "src": "272:42:16",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_ISeedStorage_$3016",
+              "typeIdentifier": "t_contract$_ISeedStorage_$3044",
               "typeString": "contract ISeedStorage"
             },
             "typeName": {
-              "id": 3050,
+              "id": 3078,
               "nodeType": "UserDefinedTypeName",
               "pathNode": {
-                "id": 3049,
+                "id": 3077,
                 "name": "ISeedStorage",
                 "nodeType": "IdentifierPath",
-                "referencedDeclaration": 3016,
+                "referencedDeclaration": 3044,
                 "src": "272:12:16"
               },
-              "referencedDeclaration": 3016,
+              "referencedDeclaration": 3044,
               "src": "272:12:16",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ISeedStorage_$3016",
+                "typeIdentifier": "t_contract$_ISeedStorage_$3044",
                 "typeString": "contract ISeedStorage"
               }
             },
@@ -1423,26 +1423,26 @@
           },
           {
             "body": {
-              "id": 3070,
+              "id": 3098,
               "nodeType": "Block",
               "src": "374:98:16",
               "statements": [
                 {
                   "expression": {
-                    "id": 3062,
+                    "id": 3090,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
-                      "id": 3058,
+                      "id": 3086,
                       "name": "seederV2",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 3048,
+                      "referencedDeclaration": 3076,
                       "src": "384:8:16",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_ISeederV2_$3036",
+                        "typeIdentifier": "t_contract$_ISeederV2_$3064",
                         "typeString": "contract ISeederV2"
                       }
                     },
@@ -1451,11 +1451,11 @@
                     "rightHandSide": {
                       "arguments": [
                         {
-                          "id": 3060,
+                          "id": 3088,
                           "name": "seederV2_",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 3053,
+                          "referencedDeclaration": 3081,
                           "src": "405:9:16",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
@@ -1470,18 +1470,18 @@
                             "typeString": "address"
                           }
                         ],
-                        "id": 3059,
+                        "id": 3087,
                         "name": "ISeederV2",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 3036,
+                        "referencedDeclaration": 3064,
                         "src": "395:9:16",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_ISeederV2_$3036_$",
+                          "typeIdentifier": "t_type$_t_contract$_ISeederV2_$3064_$",
                           "typeString": "type(contract ISeederV2)"
                         }
                       },
-                      "id": 3061,
+                      "id": 3089,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1492,36 +1492,36 @@
                       "src": "395:20:16",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_ISeederV2_$3036",
+                        "typeIdentifier": "t_contract$_ISeederV2_$3064",
                         "typeString": "contract ISeederV2"
                       }
                     },
                     "src": "384:31:16",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_ISeederV2_$3036",
+                      "typeIdentifier": "t_contract$_ISeederV2_$3064",
                       "typeString": "contract ISeederV2"
                     }
                   },
-                  "id": 3063,
+                  "id": 3091,
                   "nodeType": "ExpressionStatement",
                   "src": "384:31:16"
                 },
                 {
                   "expression": {
-                    "id": 3068,
+                    "id": 3096,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
-                      "id": 3064,
+                      "id": 3092,
                       "name": "seedStorage",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 3051,
+                      "referencedDeclaration": 3079,
                       "src": "425:11:16",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_ISeedStorage_$3016",
+                        "typeIdentifier": "t_contract$_ISeedStorage_$3044",
                         "typeString": "contract ISeedStorage"
                       }
                     },
@@ -1530,11 +1530,11 @@
                     "rightHandSide": {
                       "arguments": [
                         {
-                          "id": 3066,
+                          "id": 3094,
                           "name": "seedStorage_",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 3055,
+                          "referencedDeclaration": 3083,
                           "src": "452:12:16",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
@@ -1549,18 +1549,18 @@
                             "typeString": "address"
                           }
                         ],
-                        "id": 3065,
+                        "id": 3093,
                         "name": "ISeedStorage",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 3016,
+                        "referencedDeclaration": 3044,
                         "src": "439:12:16",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_ISeedStorage_$3016_$",
+                          "typeIdentifier": "t_type$_t_contract$_ISeedStorage_$3044_$",
                           "typeString": "type(contract ISeedStorage)"
                         }
                       },
-                      "id": 3067,
+                      "id": 3095,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1571,23 +1571,23 @@
                       "src": "439:26:16",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_ISeedStorage_$3016",
+                        "typeIdentifier": "t_contract$_ISeedStorage_$3044",
                         "typeString": "contract ISeedStorage"
                       }
                     },
                     "src": "425:40:16",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_ISeedStorage_$3016",
+                      "typeIdentifier": "t_contract$_ISeedStorage_$3044",
                       "typeString": "contract ISeedStorage"
                     }
                   },
-                  "id": 3069,
+                  "id": 3097,
                   "nodeType": "ExpressionStatement",
                   "src": "425:40:16"
                 }
               ]
             },
-            "id": 3071,
+            "id": 3099,
             "implemented": true,
             "kind": "constructor",
             "modifiers": [],
@@ -1595,17 +1595,17 @@
             "nameLocation": "-1:-1:-1",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 3056,
+              "id": 3084,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3053,
+                  "id": 3081,
                   "mutability": "mutable",
                   "name": "seederV2_",
                   "nameLocation": "341:9:16",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3071,
+                  "scope": 3099,
                   "src": "333:17:16",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1614,7 +1614,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3052,
+                    "id": 3080,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "333:7:16",
@@ -1628,12 +1628,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 3055,
+                  "id": 3083,
                   "mutability": "mutable",
                   "name": "seedStorage_",
                   "nameLocation": "360:12:16",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3071,
+                  "scope": 3099,
                   "src": "352:20:16",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1642,7 +1642,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3054,
+                    "id": 3082,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "352:7:16",
@@ -1658,12 +1658,12 @@
               "src": "332:41:16"
             },
             "returnParameters": {
-              "id": 3057,
+              "id": 3085,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "374:0:16"
             },
-            "scope": 3121,
+            "scope": 3152,
             "src": "321:151:16",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -1671,10 +1671,10 @@
           },
           {
             "baseFunctions": [
-              3023
+              3051
             ],
             "body": {
-              "id": 3081,
+              "id": 3109,
               "nodeType": "Block",
               "src": "539:43:16",
               "statements": [
@@ -1684,32 +1684,32 @@
                     "expression": {
                       "argumentTypes": [],
                       "expression": {
-                        "id": 3077,
+                        "id": 3105,
                         "name": "seederV2",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 3048,
+                        "referencedDeclaration": 3076,
                         "src": "556:8:16",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_ISeederV2_$3036",
+                          "typeIdentifier": "t_contract$_ISeederV2_$3064",
                           "typeString": "contract ISeederV2"
                         }
                       },
-                      "id": 3078,
+                      "id": 3106,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "getBatch",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 3023,
+                      "referencedDeclaration": 3051,
                       "src": "556:17:16",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
                         "typeString": "function () view external returns (uint256)"
                       }
                     },
-                    "id": 3079,
+                    "id": 3107,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1724,15 +1724,15 @@
                       "typeString": "uint256"
                     }
                   },
-                  "functionReturnParameters": 3076,
-                  "id": 3080,
+                  "functionReturnParameters": 3104,
+                  "id": 3108,
                   "nodeType": "Return",
                   "src": "549:26:16"
                 }
               ]
             },
             "functionSelector": "3b1fee6c",
-            "id": 3082,
+            "id": 3110,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -1740,29 +1740,29 @@
             "nameLocation": "487:8:16",
             "nodeType": "FunctionDefinition",
             "overrides": {
-              "id": 3073,
+              "id": 3101,
               "nodeType": "OverrideSpecifier",
               "overrides": [],
               "src": "507:8:16"
             },
             "parameters": {
-              "id": 3072,
+              "id": 3100,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "495:2:16"
             },
             "returnParameters": {
-              "id": 3076,
+              "id": 3104,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3075,
+                  "id": 3103,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3082,
+                  "scope": 3110,
                   "src": "530:7:16",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1771,7 +1771,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3074,
+                    "id": 3102,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "530:7:16",
@@ -1785,7 +1785,7 @@
               ],
               "src": "529:9:16"
             },
-            "scope": 3121,
+            "scope": 3152,
             "src": "478:104:16",
             "stateMutability": "view",
             "virtual": false,
@@ -1793,10 +1793,10 @@
           },
           {
             "baseFunctions": [
-              3030
+              3058
             ],
             "body": {
-              "id": 3095,
+              "id": 3123,
               "nodeType": "Block",
               "src": "667:53:16",
               "statements": [
@@ -1804,11 +1804,11 @@
                   "expression": {
                     "arguments": [
                       {
-                        "id": 3092,
+                        "id": 3120,
                         "name": "batch",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 3084,
+                        "referencedDeclaration": 3112,
                         "src": "707:5:16",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -1824,32 +1824,32 @@
                         }
                       ],
                       "expression": {
-                        "id": 3090,
+                        "id": 3118,
                         "name": "seederV2",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 3048,
+                        "referencedDeclaration": 3076,
                         "src": "684:8:16",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_ISeederV2_$3036",
+                          "typeIdentifier": "t_contract$_ISeederV2_$3064",
                           "typeString": "contract ISeederV2"
                         }
                       },
-                      "id": 3091,
+                      "id": 3119,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "getReqByBatch",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 3030,
+                      "referencedDeclaration": 3058,
                       "src": "684:22:16",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$_t_uint256_$returns$_t_bytes32_$",
                         "typeString": "function (uint256) view external returns (bytes32)"
                       }
                     },
-                    "id": 3093,
+                    "id": 3121,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1864,15 +1864,15 @@
                       "typeString": "bytes32"
                     }
                   },
-                  "functionReturnParameters": 3089,
-                  "id": 3094,
+                  "functionReturnParameters": 3117,
+                  "id": 3122,
                   "nodeType": "Return",
                   "src": "677:36:16"
                 }
               ]
             },
             "functionSelector": "591c0e1c",
-            "id": 3096,
+            "id": 3124,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -1880,23 +1880,23 @@
             "nameLocation": "597:13:16",
             "nodeType": "FunctionDefinition",
             "overrides": {
-              "id": 3086,
+              "id": 3114,
               "nodeType": "OverrideSpecifier",
               "overrides": [],
               "src": "635:8:16"
             },
             "parameters": {
-              "id": 3085,
+              "id": 3113,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3084,
+                  "id": 3112,
                   "mutability": "mutable",
                   "name": "batch",
                   "nameLocation": "619:5:16",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3096,
+                  "scope": 3124,
                   "src": "611:13:16",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1905,7 +1905,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3083,
+                    "id": 3111,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "611:7:16",
@@ -1920,17 +1920,17 @@
               "src": "610:15:16"
             },
             "returnParameters": {
-              "id": 3089,
+              "id": 3117,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3088,
+                  "id": 3116,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3096,
+                  "scope": 3124,
                   "src": "658:7:16",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1939,7 +1939,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 3087,
+                    "id": 3115,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "658:7:16",
@@ -1953,7 +1953,7 @@
               ],
               "src": "657:9:16"
             },
-            "scope": 3121,
+            "scope": 3152,
             "src": "588:132:16",
             "stateMutability": "view",
             "virtual": false,
@@ -1961,12 +1961,12 @@
           },
           {
             "baseFunctions": [
-              3035
+              3063
             ],
             "body": {
-              "id": 3105,
+              "id": 3136,
               "nodeType": "Block",
-              "src": "791:56:16",
+              "src": "800:67:16",
               "statements": [
                 {
                   "expression": {
@@ -1974,32 +1974,68 @@
                     "expression": {
                       "argumentTypes": [],
                       "expression": {
-                        "id": 3101,
-                        "name": "seederV2",
-                        "nodeType": "Identifier",
-                        "overloadedDeclarations": [],
-                        "referencedDeclaration": 3048,
-                        "src": "808:8:16",
+                        "arguments": [
+                          {
+                            "id": 3131,
+                            "name": "seederV2",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 3076,
+                            "src": "827:8:16",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_contract$_ISeederV2_$3064",
+                              "typeString": "contract ISeederV2"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_contract$_ISeederV2_$3064",
+                              "typeString": "contract ISeederV2"
+                            }
+                          ],
+                          "id": 3130,
+                          "name": "ISeederV2",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 3064,
+                          "src": "817:9:16",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_contract$_ISeederV2_$3064_$",
+                            "typeString": "type(contract ISeederV2)"
+                          }
+                        },
+                        "id": 3132,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "817:19:16",
+                        "tryCall": false,
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_ISeederV2_$3036",
+                          "typeIdentifier": "t_contract$_ISeederV2_$3064",
                           "typeString": "contract ISeederV2"
                         }
                       },
-                      "id": 3102,
+                      "id": 3133,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "getNextAvailableBatch",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 3035,
-                      "src": "808:30:16",
+                      "referencedDeclaration": 3063,
+                      "src": "817:41:16",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
                         "typeString": "function () view external returns (uint256)"
                       }
                     },
-                    "id": 3103,
+                    "id": 3134,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -2007,47 +2043,53 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "808:32:16",
+                    "src": "817:43:16",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "functionReturnParameters": 3100,
-                  "id": 3104,
+                  "functionReturnParameters": 3129,
+                  "id": 3135,
                   "nodeType": "Return",
-                  "src": "801:39:16"
+                  "src": "810:50:16"
                 }
               ]
             },
             "functionSelector": "3c099fce",
-            "id": 3106,
+            "id": 3137,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "getNextAvailableBatch",
             "nameLocation": "735:21:16",
             "nodeType": "FunctionDefinition",
+            "overrides": {
+              "id": 3126,
+              "nodeType": "OverrideSpecifier",
+              "overrides": [],
+              "src": "768:8:16"
+            },
             "parameters": {
-              "id": 3097,
+              "id": 3125,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "756:2:16"
             },
             "returnParameters": {
-              "id": 3100,
+              "id": 3129,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3099,
+                  "id": 3128,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3106,
-                  "src": "782:7:16",
+                  "scope": 3137,
+                  "src": "791:7:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2055,10 +2097,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3098,
+                    "id": 3127,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "782:7:16",
+                    "src": "791:7:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2067,33 +2109,33 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "781:9:16"
+              "src": "790:9:16"
             },
-            "scope": 3121,
-            "src": "726:121:16",
+            "scope": 3152,
+            "src": "726:141:16",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
             "baseFunctions": [
-              3015
+              3043
             ],
             "body": {
-              "id": 3119,
+              "id": 3150,
               "nodeType": "Block",
-              "src": "930:54:16",
+              "src": "950:54:16",
               "statements": [
                 {
                   "expression": {
                     "arguments": [
                       {
-                        "id": 3116,
+                        "id": 3147,
                         "name": "key",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 3108,
-                        "src": "973:3:16",
+                        "referencedDeclaration": 3139,
+                        "src": "993:3:16",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bytes32",
                           "typeString": "bytes32"
@@ -2108,32 +2150,32 @@
                         }
                       ],
                       "expression": {
-                        "id": 3114,
+                        "id": 3145,
                         "name": "seedStorage",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 3051,
-                        "src": "947:11:16",
+                        "referencedDeclaration": 3079,
+                        "src": "967:11:16",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_ISeedStorage_$3016",
+                          "typeIdentifier": "t_contract$_ISeedStorage_$3044",
                           "typeString": "contract ISeedStorage"
                         }
                       },
-                      "id": 3115,
+                      "id": 3146,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "getRandomness",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 3015,
-                      "src": "947:25:16",
+                      "referencedDeclaration": 3043,
+                      "src": "967:25:16",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$_t_bytes32_$returns$_t_uint256_$",
                         "typeString": "function (bytes32) view external returns (uint256)"
                       }
                     },
-                    "id": 3117,
+                    "id": 3148,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -2141,47 +2183,47 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "947:30:16",
+                    "src": "967:30:16",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "functionReturnParameters": 3113,
-                  "id": 3118,
+                  "functionReturnParameters": 3144,
+                  "id": 3149,
                   "nodeType": "Return",
-                  "src": "940:37:16"
+                  "src": "960:37:16"
                 }
               ]
             },
             "functionSelector": "05b19402",
-            "id": 3120,
+            "id": 3151,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "getRandomness",
-            "nameLocation": "862:13:16",
+            "nameLocation": "882:13:16",
             "nodeType": "FunctionDefinition",
             "overrides": {
-              "id": 3110,
+              "id": 3141,
               "nodeType": "OverrideSpecifier",
               "overrides": [],
-              "src": "898:8:16"
+              "src": "918:8:16"
             },
             "parameters": {
-              "id": 3109,
+              "id": 3140,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3108,
+                  "id": 3139,
                   "mutability": "mutable",
                   "name": "key",
-                  "nameLocation": "884:3:16",
+                  "nameLocation": "904:3:16",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3120,
-                  "src": "876:11:16",
+                  "scope": 3151,
+                  "src": "896:11:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2189,10 +2231,10 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 3107,
+                    "id": 3138,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
-                    "src": "876:7:16",
+                    "src": "896:7:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
@@ -2201,21 +2243,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "875:13:16"
+              "src": "895:13:16"
             },
             "returnParameters": {
-              "id": 3113,
+              "id": 3144,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3112,
+                  "id": 3143,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3120,
-                  "src": "921:7:16",
+                  "scope": 3151,
+                  "src": "941:7:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2223,10 +2265,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3111,
+                    "id": 3142,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "921:7:16",
+                    "src": "941:7:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2235,41 +2277,41 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "920:9:16"
+              "src": "940:9:16"
             },
-            "scope": 3121,
-            "src": "853:131:16",
+            "scope": 3152,
+            "src": "873:131:16",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 3122,
-        "src": "179:807:16",
+        "scope": 3153,
+        "src": "179:827:16",
         "usedErrors": []
       }
     ],
-    "src": "32:955:16"
+    "src": "32:975:16"
   },
   "legacyAST": {
     "absolutePath": "project:/contracts/RpSeeder.sol",
     "exportedSymbols": {
       "ISeedStorage": [
-        3016
+        3044
       ],
       "ISeederV2": [
-        3036
+        3064
       ],
       "RpSeeder": [
-        3121
+        3152
       ]
     },
-    "id": 3122,
+    "id": 3153,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 3038,
+        "id": 3066,
         "literals": [
           "solidity",
           "^",
@@ -2282,11 +2324,11 @@
       {
         "absolutePath": "project:/contracts/ISeederV2.sol",
         "file": "./ISeederV2.sol",
-        "id": 3039,
+        "id": 3067,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 3122,
-        "sourceUnit": 3037,
+        "scope": 3153,
+        "sourceUnit": 3065,
         "src": "57:25:16",
         "symbolAliases": [],
         "unitAlias": ""
@@ -2294,11 +2336,11 @@
       {
         "absolutePath": "project:/contracts/ISeedStorage.sol",
         "file": "./ISeedStorage.sol",
-        "id": 3040,
+        "id": 3068,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 3122,
-        "sourceUnit": 3017,
+        "scope": 3153,
+        "sourceUnit": 3045,
         "src": "83:28:16",
         "symbolAliases": [],
         "unitAlias": ""
@@ -2308,25 +2350,25 @@
         "baseContracts": [
           {
             "baseName": {
-              "id": 3042,
+              "id": 3070,
               "name": "ISeederV2",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 3036,
+              "referencedDeclaration": 3064,
               "src": "200:9:16"
             },
-            "id": 3043,
+            "id": 3071,
             "nodeType": "InheritanceSpecifier",
             "src": "200:9:16"
           },
           {
             "baseName": {
-              "id": 3044,
+              "id": 3072,
               "name": "ISeedStorage",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 3016,
+              "referencedDeclaration": 3044,
               "src": "211:12:16"
             },
-            "id": 3045,
+            "id": 3073,
             "nodeType": "InheritanceSpecifier",
             "src": "211:12:16"
           }
@@ -2335,17 +2377,17 @@
         "contractDependencies": [],
         "contractKind": "contract",
         "documentation": {
-          "id": 3041,
+          "id": 3069,
           "nodeType": "StructuredDocumentation",
           "src": "113:66:16",
           "text": "@title Access to the batch seeder used by the Raid Party game"
         },
         "fullyImplemented": true,
-        "id": 3121,
+        "id": 3152,
         "linearizedBaseContracts": [
-          3121,
-          3016,
-          3036
+          3152,
+          3044,
+          3064
         ],
         "name": "RpSeeder",
         "nameLocation": "188:8:16",
@@ -2353,33 +2395,33 @@
         "nodes": [
           {
             "constant": false,
-            "id": 3048,
+            "id": 3076,
             "mutability": "immutable",
             "name": "seederV2",
             "nameLocation": "258:8:16",
             "nodeType": "VariableDeclaration",
-            "scope": 3121,
+            "scope": 3152,
             "src": "230:36:16",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_ISeederV2_$3036",
+              "typeIdentifier": "t_contract$_ISeederV2_$3064",
               "typeString": "contract ISeederV2"
             },
             "typeName": {
-              "id": 3047,
+              "id": 3075,
               "nodeType": "UserDefinedTypeName",
               "pathNode": {
-                "id": 3046,
+                "id": 3074,
                 "name": "ISeederV2",
                 "nodeType": "IdentifierPath",
-                "referencedDeclaration": 3036,
+                "referencedDeclaration": 3064,
                 "src": "230:9:16"
               },
-              "referencedDeclaration": 3036,
+              "referencedDeclaration": 3064,
               "src": "230:9:16",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ISeederV2_$3036",
+                "typeIdentifier": "t_contract$_ISeederV2_$3064",
                 "typeString": "contract ISeederV2"
               }
             },
@@ -2387,33 +2429,33 @@
           },
           {
             "constant": false,
-            "id": 3051,
+            "id": 3079,
             "mutability": "immutable",
             "name": "seedStorage",
             "nameLocation": "303:11:16",
             "nodeType": "VariableDeclaration",
-            "scope": 3121,
+            "scope": 3152,
             "src": "272:42:16",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_ISeedStorage_$3016",
+              "typeIdentifier": "t_contract$_ISeedStorage_$3044",
               "typeString": "contract ISeedStorage"
             },
             "typeName": {
-              "id": 3050,
+              "id": 3078,
               "nodeType": "UserDefinedTypeName",
               "pathNode": {
-                "id": 3049,
+                "id": 3077,
                 "name": "ISeedStorage",
                 "nodeType": "IdentifierPath",
-                "referencedDeclaration": 3016,
+                "referencedDeclaration": 3044,
                 "src": "272:12:16"
               },
-              "referencedDeclaration": 3016,
+              "referencedDeclaration": 3044,
               "src": "272:12:16",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ISeedStorage_$3016",
+                "typeIdentifier": "t_contract$_ISeedStorage_$3044",
                 "typeString": "contract ISeedStorage"
               }
             },
@@ -2421,26 +2463,26 @@
           },
           {
             "body": {
-              "id": 3070,
+              "id": 3098,
               "nodeType": "Block",
               "src": "374:98:16",
               "statements": [
                 {
                   "expression": {
-                    "id": 3062,
+                    "id": 3090,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
-                      "id": 3058,
+                      "id": 3086,
                       "name": "seederV2",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 3048,
+                      "referencedDeclaration": 3076,
                       "src": "384:8:16",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_ISeederV2_$3036",
+                        "typeIdentifier": "t_contract$_ISeederV2_$3064",
                         "typeString": "contract ISeederV2"
                       }
                     },
@@ -2449,11 +2491,11 @@
                     "rightHandSide": {
                       "arguments": [
                         {
-                          "id": 3060,
+                          "id": 3088,
                           "name": "seederV2_",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 3053,
+                          "referencedDeclaration": 3081,
                           "src": "405:9:16",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
@@ -2468,18 +2510,18 @@
                             "typeString": "address"
                           }
                         ],
-                        "id": 3059,
+                        "id": 3087,
                         "name": "ISeederV2",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 3036,
+                        "referencedDeclaration": 3064,
                         "src": "395:9:16",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_ISeederV2_$3036_$",
+                          "typeIdentifier": "t_type$_t_contract$_ISeederV2_$3064_$",
                           "typeString": "type(contract ISeederV2)"
                         }
                       },
-                      "id": 3061,
+                      "id": 3089,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -2490,36 +2532,36 @@
                       "src": "395:20:16",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_ISeederV2_$3036",
+                        "typeIdentifier": "t_contract$_ISeederV2_$3064",
                         "typeString": "contract ISeederV2"
                       }
                     },
                     "src": "384:31:16",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_ISeederV2_$3036",
+                      "typeIdentifier": "t_contract$_ISeederV2_$3064",
                       "typeString": "contract ISeederV2"
                     }
                   },
-                  "id": 3063,
+                  "id": 3091,
                   "nodeType": "ExpressionStatement",
                   "src": "384:31:16"
                 },
                 {
                   "expression": {
-                    "id": 3068,
+                    "id": 3096,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
-                      "id": 3064,
+                      "id": 3092,
                       "name": "seedStorage",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 3051,
+                      "referencedDeclaration": 3079,
                       "src": "425:11:16",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_ISeedStorage_$3016",
+                        "typeIdentifier": "t_contract$_ISeedStorage_$3044",
                         "typeString": "contract ISeedStorage"
                       }
                     },
@@ -2528,11 +2570,11 @@
                     "rightHandSide": {
                       "arguments": [
                         {
-                          "id": 3066,
+                          "id": 3094,
                           "name": "seedStorage_",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 3055,
+                          "referencedDeclaration": 3083,
                           "src": "452:12:16",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
@@ -2547,18 +2589,18 @@
                             "typeString": "address"
                           }
                         ],
-                        "id": 3065,
+                        "id": 3093,
                         "name": "ISeedStorage",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 3016,
+                        "referencedDeclaration": 3044,
                         "src": "439:12:16",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_ISeedStorage_$3016_$",
+                          "typeIdentifier": "t_type$_t_contract$_ISeedStorage_$3044_$",
                           "typeString": "type(contract ISeedStorage)"
                         }
                       },
-                      "id": 3067,
+                      "id": 3095,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -2569,23 +2611,23 @@
                       "src": "439:26:16",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_ISeedStorage_$3016",
+                        "typeIdentifier": "t_contract$_ISeedStorage_$3044",
                         "typeString": "contract ISeedStorage"
                       }
                     },
                     "src": "425:40:16",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_ISeedStorage_$3016",
+                      "typeIdentifier": "t_contract$_ISeedStorage_$3044",
                       "typeString": "contract ISeedStorage"
                     }
                   },
-                  "id": 3069,
+                  "id": 3097,
                   "nodeType": "ExpressionStatement",
                   "src": "425:40:16"
                 }
               ]
             },
-            "id": 3071,
+            "id": 3099,
             "implemented": true,
             "kind": "constructor",
             "modifiers": [],
@@ -2593,17 +2635,17 @@
             "nameLocation": "-1:-1:-1",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 3056,
+              "id": 3084,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3053,
+                  "id": 3081,
                   "mutability": "mutable",
                   "name": "seederV2_",
                   "nameLocation": "341:9:16",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3071,
+                  "scope": 3099,
                   "src": "333:17:16",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2612,7 +2654,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3052,
+                    "id": 3080,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "333:7:16",
@@ -2626,12 +2668,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 3055,
+                  "id": 3083,
                   "mutability": "mutable",
                   "name": "seedStorage_",
                   "nameLocation": "360:12:16",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3071,
+                  "scope": 3099,
                   "src": "352:20:16",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2640,7 +2682,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3054,
+                    "id": 3082,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "352:7:16",
@@ -2656,12 +2698,12 @@
               "src": "332:41:16"
             },
             "returnParameters": {
-              "id": 3057,
+              "id": 3085,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "374:0:16"
             },
-            "scope": 3121,
+            "scope": 3152,
             "src": "321:151:16",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -2669,10 +2711,10 @@
           },
           {
             "baseFunctions": [
-              3023
+              3051
             ],
             "body": {
-              "id": 3081,
+              "id": 3109,
               "nodeType": "Block",
               "src": "539:43:16",
               "statements": [
@@ -2682,32 +2724,32 @@
                     "expression": {
                       "argumentTypes": [],
                       "expression": {
-                        "id": 3077,
+                        "id": 3105,
                         "name": "seederV2",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 3048,
+                        "referencedDeclaration": 3076,
                         "src": "556:8:16",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_ISeederV2_$3036",
+                          "typeIdentifier": "t_contract$_ISeederV2_$3064",
                           "typeString": "contract ISeederV2"
                         }
                       },
-                      "id": 3078,
+                      "id": 3106,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "getBatch",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 3023,
+                      "referencedDeclaration": 3051,
                       "src": "556:17:16",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
                         "typeString": "function () view external returns (uint256)"
                       }
                     },
-                    "id": 3079,
+                    "id": 3107,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -2722,15 +2764,15 @@
                       "typeString": "uint256"
                     }
                   },
-                  "functionReturnParameters": 3076,
-                  "id": 3080,
+                  "functionReturnParameters": 3104,
+                  "id": 3108,
                   "nodeType": "Return",
                   "src": "549:26:16"
                 }
               ]
             },
             "functionSelector": "3b1fee6c",
-            "id": 3082,
+            "id": 3110,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -2738,29 +2780,29 @@
             "nameLocation": "487:8:16",
             "nodeType": "FunctionDefinition",
             "overrides": {
-              "id": 3073,
+              "id": 3101,
               "nodeType": "OverrideSpecifier",
               "overrides": [],
               "src": "507:8:16"
             },
             "parameters": {
-              "id": 3072,
+              "id": 3100,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "495:2:16"
             },
             "returnParameters": {
-              "id": 3076,
+              "id": 3104,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3075,
+                  "id": 3103,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3082,
+                  "scope": 3110,
                   "src": "530:7:16",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2769,7 +2811,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3074,
+                    "id": 3102,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "530:7:16",
@@ -2783,7 +2825,7 @@
               ],
               "src": "529:9:16"
             },
-            "scope": 3121,
+            "scope": 3152,
             "src": "478:104:16",
             "stateMutability": "view",
             "virtual": false,
@@ -2791,10 +2833,10 @@
           },
           {
             "baseFunctions": [
-              3030
+              3058
             ],
             "body": {
-              "id": 3095,
+              "id": 3123,
               "nodeType": "Block",
               "src": "667:53:16",
               "statements": [
@@ -2802,11 +2844,11 @@
                   "expression": {
                     "arguments": [
                       {
-                        "id": 3092,
+                        "id": 3120,
                         "name": "batch",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 3084,
+                        "referencedDeclaration": 3112,
                         "src": "707:5:16",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -2822,32 +2864,32 @@
                         }
                       ],
                       "expression": {
-                        "id": 3090,
+                        "id": 3118,
                         "name": "seederV2",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 3048,
+                        "referencedDeclaration": 3076,
                         "src": "684:8:16",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_ISeederV2_$3036",
+                          "typeIdentifier": "t_contract$_ISeederV2_$3064",
                           "typeString": "contract ISeederV2"
                         }
                       },
-                      "id": 3091,
+                      "id": 3119,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "getReqByBatch",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 3030,
+                      "referencedDeclaration": 3058,
                       "src": "684:22:16",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$_t_uint256_$returns$_t_bytes32_$",
                         "typeString": "function (uint256) view external returns (bytes32)"
                       }
                     },
-                    "id": 3093,
+                    "id": 3121,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -2862,15 +2904,15 @@
                       "typeString": "bytes32"
                     }
                   },
-                  "functionReturnParameters": 3089,
-                  "id": 3094,
+                  "functionReturnParameters": 3117,
+                  "id": 3122,
                   "nodeType": "Return",
                   "src": "677:36:16"
                 }
               ]
             },
             "functionSelector": "591c0e1c",
-            "id": 3096,
+            "id": 3124,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -2878,23 +2920,23 @@
             "nameLocation": "597:13:16",
             "nodeType": "FunctionDefinition",
             "overrides": {
-              "id": 3086,
+              "id": 3114,
               "nodeType": "OverrideSpecifier",
               "overrides": [],
               "src": "635:8:16"
             },
             "parameters": {
-              "id": 3085,
+              "id": 3113,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3084,
+                  "id": 3112,
                   "mutability": "mutable",
                   "name": "batch",
                   "nameLocation": "619:5:16",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3096,
+                  "scope": 3124,
                   "src": "611:13:16",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2903,7 +2945,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3083,
+                    "id": 3111,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "611:7:16",
@@ -2918,17 +2960,17 @@
               "src": "610:15:16"
             },
             "returnParameters": {
-              "id": 3089,
+              "id": 3117,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3088,
+                  "id": 3116,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3096,
+                  "scope": 3124,
                   "src": "658:7:16",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2937,7 +2979,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 3087,
+                    "id": 3115,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "658:7:16",
@@ -2951,7 +2993,7 @@
               ],
               "src": "657:9:16"
             },
-            "scope": 3121,
+            "scope": 3152,
             "src": "588:132:16",
             "stateMutability": "view",
             "virtual": false,
@@ -2959,12 +3001,12 @@
           },
           {
             "baseFunctions": [
-              3035
+              3063
             ],
             "body": {
-              "id": 3105,
+              "id": 3136,
               "nodeType": "Block",
-              "src": "791:56:16",
+              "src": "800:67:16",
               "statements": [
                 {
                   "expression": {
@@ -2972,32 +3014,68 @@
                     "expression": {
                       "argumentTypes": [],
                       "expression": {
-                        "id": 3101,
-                        "name": "seederV2",
-                        "nodeType": "Identifier",
-                        "overloadedDeclarations": [],
-                        "referencedDeclaration": 3048,
-                        "src": "808:8:16",
+                        "arguments": [
+                          {
+                            "id": 3131,
+                            "name": "seederV2",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 3076,
+                            "src": "827:8:16",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_contract$_ISeederV2_$3064",
+                              "typeString": "contract ISeederV2"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_contract$_ISeederV2_$3064",
+                              "typeString": "contract ISeederV2"
+                            }
+                          ],
+                          "id": 3130,
+                          "name": "ISeederV2",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 3064,
+                          "src": "817:9:16",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_contract$_ISeederV2_$3064_$",
+                            "typeString": "type(contract ISeederV2)"
+                          }
+                        },
+                        "id": 3132,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "817:19:16",
+                        "tryCall": false,
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_ISeederV2_$3036",
+                          "typeIdentifier": "t_contract$_ISeederV2_$3064",
                           "typeString": "contract ISeederV2"
                         }
                       },
-                      "id": 3102,
+                      "id": 3133,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "getNextAvailableBatch",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 3035,
-                      "src": "808:30:16",
+                      "referencedDeclaration": 3063,
+                      "src": "817:41:16",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
                         "typeString": "function () view external returns (uint256)"
                       }
                     },
-                    "id": 3103,
+                    "id": 3134,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -3005,47 +3083,53 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "808:32:16",
+                    "src": "817:43:16",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "functionReturnParameters": 3100,
-                  "id": 3104,
+                  "functionReturnParameters": 3129,
+                  "id": 3135,
                   "nodeType": "Return",
-                  "src": "801:39:16"
+                  "src": "810:50:16"
                 }
               ]
             },
             "functionSelector": "3c099fce",
-            "id": 3106,
+            "id": 3137,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "getNextAvailableBatch",
             "nameLocation": "735:21:16",
             "nodeType": "FunctionDefinition",
+            "overrides": {
+              "id": 3126,
+              "nodeType": "OverrideSpecifier",
+              "overrides": [],
+              "src": "768:8:16"
+            },
             "parameters": {
-              "id": 3097,
+              "id": 3125,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "756:2:16"
             },
             "returnParameters": {
-              "id": 3100,
+              "id": 3129,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3099,
+                  "id": 3128,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3106,
-                  "src": "782:7:16",
+                  "scope": 3137,
+                  "src": "791:7:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -3053,10 +3137,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3098,
+                    "id": 3127,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "782:7:16",
+                    "src": "791:7:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -3065,33 +3149,33 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "781:9:16"
+              "src": "790:9:16"
             },
-            "scope": 3121,
-            "src": "726:121:16",
+            "scope": 3152,
+            "src": "726:141:16",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
             "baseFunctions": [
-              3015
+              3043
             ],
             "body": {
-              "id": 3119,
+              "id": 3150,
               "nodeType": "Block",
-              "src": "930:54:16",
+              "src": "950:54:16",
               "statements": [
                 {
                   "expression": {
                     "arguments": [
                       {
-                        "id": 3116,
+                        "id": 3147,
                         "name": "key",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 3108,
-                        "src": "973:3:16",
+                        "referencedDeclaration": 3139,
+                        "src": "993:3:16",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bytes32",
                           "typeString": "bytes32"
@@ -3106,32 +3190,32 @@
                         }
                       ],
                       "expression": {
-                        "id": 3114,
+                        "id": 3145,
                         "name": "seedStorage",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 3051,
-                        "src": "947:11:16",
+                        "referencedDeclaration": 3079,
+                        "src": "967:11:16",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_ISeedStorage_$3016",
+                          "typeIdentifier": "t_contract$_ISeedStorage_$3044",
                           "typeString": "contract ISeedStorage"
                         }
                       },
-                      "id": 3115,
+                      "id": 3146,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "getRandomness",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 3015,
-                      "src": "947:25:16",
+                      "referencedDeclaration": 3043,
+                      "src": "967:25:16",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$_t_bytes32_$returns$_t_uint256_$",
                         "typeString": "function (bytes32) view external returns (uint256)"
                       }
                     },
-                    "id": 3117,
+                    "id": 3148,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -3139,47 +3223,47 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "947:30:16",
+                    "src": "967:30:16",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "functionReturnParameters": 3113,
-                  "id": 3118,
+                  "functionReturnParameters": 3144,
+                  "id": 3149,
                   "nodeType": "Return",
-                  "src": "940:37:16"
+                  "src": "960:37:16"
                 }
               ]
             },
             "functionSelector": "05b19402",
-            "id": 3120,
+            "id": 3151,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "getRandomness",
-            "nameLocation": "862:13:16",
+            "nameLocation": "882:13:16",
             "nodeType": "FunctionDefinition",
             "overrides": {
-              "id": 3110,
+              "id": 3141,
               "nodeType": "OverrideSpecifier",
               "overrides": [],
-              "src": "898:8:16"
+              "src": "918:8:16"
             },
             "parameters": {
-              "id": 3109,
+              "id": 3140,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3108,
+                  "id": 3139,
                   "mutability": "mutable",
                   "name": "key",
-                  "nameLocation": "884:3:16",
+                  "nameLocation": "904:3:16",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3120,
-                  "src": "876:11:16",
+                  "scope": 3151,
+                  "src": "896:11:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -3187,10 +3271,10 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 3107,
+                    "id": 3138,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
-                    "src": "876:7:16",
+                    "src": "896:7:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
@@ -3199,21 +3283,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "875:13:16"
+              "src": "895:13:16"
             },
             "returnParameters": {
-              "id": 3113,
+              "id": 3144,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3112,
+                  "id": 3143,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3120,
-                  "src": "921:7:16",
+                  "scope": 3151,
+                  "src": "941:7:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -3221,10 +3305,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3111,
+                    "id": 3142,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "921:7:16",
+                    "src": "941:7:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -3233,21 +3317,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "920:9:16"
+              "src": "940:9:16"
             },
-            "scope": 3121,
-            "src": "853:131:16",
+            "scope": 3152,
+            "src": "873:131:16",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 3122,
-        "src": "179:807:16",
+        "scope": 3153,
+        "src": "179:827:16",
         "usedErrors": []
       }
     ],
-    "src": "32:955:16"
+    "src": "32:975:16"
   },
   "compiler": {
     "name": "solc",
@@ -3255,7 +3339,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.6",
-  "updatedAt": "2022-04-06T00:23:43.253Z",
+  "updatedAt": "2022-04-06T16:28:27.975Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},
