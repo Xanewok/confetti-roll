@@ -118,6 +118,10 @@ contract ConfettiRoll is AccessControlEnumerable, Ownable, Pausable {
         defaultStartingRoll = default_;
     }
 
+    function setDefaultMaxParticipants(uint256 value) public onlyOwner {
+        defaultMaxParticipants = value;
+    }
+
     /// @dev We piggyback on the RaidParty batch seeder for our game round abstraction
     function currentRound() public view returns (uint256) {
         return seeder.getBatch();

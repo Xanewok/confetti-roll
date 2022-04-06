@@ -186,4 +186,19 @@ contract("ConfettiRoll", (accounts) => {
     });
   });
 
+  it("asserts that default max participants limit is enforced", async () => {
+    const seederV2 = await TestSeederV2.deployed();
+    const roll = await ConfettiRoll.deployed();
+
+    await setRound(0x123);
+
+    await roll.setDefaultMaxParticipants(3);
+    await roll.joinGlobalGame({ from: accounts[0] })
+    await roll.joinGlobalGame({ from: accounts[1] })
+    await roll.joinGlobalGame({ from: accounts[2] })
+    await assert.rejects(() => roll.joinGlobalGame({ from: accounts[3] }));
+
+    const game = await roll.getGame(await roll.currentGlobalGameId());
+    assert.equal(game.participants.length, 3);
+  });
 });
