@@ -28,7 +28,7 @@ contract ConfettiRoll is AccessControlEnumerable, Ownable, Pausable {
     uint256 public maxBet = 150e18; // 150 $CFTI
     uint256 public defaultBet = 15e18; // 15 $CFTI
 
-    uint256 public minStartingRoll = 1;
+    uint256 public minStartingRoll = 2;
     uint256 public maxStartingRoll = 1000;
     uint256 public defaultStartingRoll = 100;
 
