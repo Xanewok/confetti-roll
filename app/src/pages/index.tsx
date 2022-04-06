@@ -10,7 +10,7 @@ import {
   Link,
 } from '@chakra-ui/react'
 import type { NextPage } from 'next'
-import { useEthers } from '@usedapp/core'
+import { useCall, useEthers } from '@usedapp/core'
 import { Contract } from '@ethersproject/contracts'
 import { TOKEN_ADDRESS, SEEDERV2_ABI } from '../constants'
 import Status from '../components/Status'
@@ -35,6 +35,25 @@ const Home: NextPage = () => {
     chainId,
     library,
   } = useEthers()
+
+  const useNextSeedBatch = () => {
+    const contract = new Contract(TOKEN_ADDRESS['SEEDER'], SEEDERV2_ABI)
+    const { value, error } =
+      useCall({
+        contract,
+        method: 'getNextAvailableBatch',
+        args: [],
+      }) ?? {}
+
+    if (error) {
+      console.error(error.message)
+      return null
+    }
+    return value?.[0]
+  }
+
+  const nextSeedBatch = Number(useNextSeedBatch()) / 1000;
+
   const doSeed = useCallback(() => {
     const contract = new Contract(TOKEN_ADDRESS['SEEDER'], SEEDERV2_ABI)
     const signer = account && library?.getSigner(account)
@@ -49,13 +68,13 @@ const Home: NextPage = () => {
     return () => clearInterval(timer)
   }, [])
 
+  const timeTillSeed = nextSeedBatch - timeNow
+
   useEffect(() => {
     if (!active) {
       activateBrowserWallet()
     }
   })
-
-  const timeTillSeed = 0
 
   return (
     <>
