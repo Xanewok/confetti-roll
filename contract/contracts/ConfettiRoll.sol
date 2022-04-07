@@ -21,7 +21,7 @@ contract ConfettiRoll is AccessControlEnumerable, Ownable, Pausable {
     uint256 public treasuryAmount;
 
     uint256 public treasuryFee = 500; // 5%
-    uint256 public betTip = 25; // 0.25%
+    uint256 public betTip = 50; // 0.5%
     uint256 constant FEE_PRECISION = 1e4;
 
     uint256 public minBet = 1e17; // 0.1 $CFTI
@@ -45,10 +45,15 @@ contract ConfettiRoll is AccessControlEnumerable, Ownable, Pausable {
     }
 
     struct GameResult {
-        address[] players;
-        // The player who rolled last is the loser
-        uint256[] rolls;
+        // In theory this should always be equal to `getSeed(game.roundNum)`;
+        // however, since we depend on an external seeder, let's always remember
+        // the seed for a given finalized game to make the results verifiable
+        // and deterministic
+        uint256 finalizedSeed;
+        // The amount that every participant (except for the loser) is due,
+        // after the game finishes
         uint256 prizeShare;
+        address loser;
     }
 
     event PlayerLost(bytes32 indexed gameId, address indexed player);
@@ -146,22 +151,28 @@ contract ConfettiRoll is AccessControlEnumerable, Ownable, Pausable {
     }
 
     function isGameFinished(bytes32 gameId) public view returns (bool) {
-        return gameResults[gameId].rolls.length != 0;
+        return gameResults[gameId].loser != address(0x0);
     }
 
-    /// @notice Given a game result, return an address of a player who lost
-    function getLoser(GameResult memory result) public pure returns (address) {
-        if (result.rolls.length == 0) {
-            return address(0x0);
-        }
-        uint256 loserIdx = (result.rolls.length - 1) % result.players.length;
-        return result.players[loserIdx];
+    /// @notice Returns the order in which the players roll for a given game
+    function getRollingPlayers(bytes32 gameId)
+        public
+        view
+        returns (address[] memory)
+    {
+        Game memory game = games[gameId];
+        uint256 seed = getSeed(game.roundNum);
+        require(seed > 0, "Game not seeded yet");
+        require(game.participants.length >= 2, "Need at least 2 players");
+
+        return shuffledPlayers(game.participants, seed);
     }
 
+    /// @notice Returns player rolls for a given game. They correspond to player order returned by `getRollingPlayers`
     function getRolls(bytes32 gameId) public view returns (uint256[] memory) {
         Game memory game = games[gameId];
         uint256 seed = getSeed(game.roundNum);
-        require(seed != 0, "Game not seeded yet");
+        require(seed > 0, "Game not seeded yet");
         require(game.participants.length >= 2, "Need at least 2 players");
         // NOTE: The part below is the same as `simulateGame` only with
         // remembering the roll values (which are originally not to save gas).
@@ -179,11 +190,11 @@ contract ConfettiRoll is AccessControlEnumerable, Ownable, Pausable {
             rolls[rollCount] = roll + 1;
             rollCount++;
         }
-        // NOTE: This is meant to be executed as read-only function, so it's fine
-        // to copy over the results to truncate the rolls array;
+        // NOTE: This is meant to be executed in a read-only fashion - to get rid
+        // of the extra zeroes, we just copy over the actual rolls to a new array
         uint256[] memory returnedRolls = new uint256[](rollCount);
-        for (uint256 i = 0; i < rollCount; i++) {
-            returnedRolls[i] = rolls[rollCount];
+        for (uint256 i = 0; i < returnedRolls.length; i++) {
+            returnedRolls[i] = rolls[i];
         }
         return returnedRolls;
     }
@@ -209,8 +220,7 @@ contract ConfettiRoll is AccessControlEnumerable, Ownable, Pausable {
         view
         returns (bool)
     {
-        return (isGameFinished(gameId) &&
-            getLoser(gameResults[gameId]) != player);
+        return (isGameFinished(gameId) && gameResults[gameId].loser != player);
     }
 
     /// @notice Returns a total amount of claimable rewards by the player
@@ -254,6 +264,8 @@ contract ConfettiRoll is AccessControlEnumerable, Ownable, Pausable {
     }
 
     /// @notice Calculates the game identifier for a given game initializer and roundNum
+    /// The game initializer can be either the address of the contract if we're
+    /// creating a "global" game or the address of the callee
     function calcGameId(address initializer, uint256 roundNum)
         public
         pure
@@ -414,24 +426,34 @@ contract ConfettiRoll is AccessControlEnumerable, Ownable, Pausable {
 
         uint256 seed = getSeed(game.roundNum);
         require(seed > 0, "Game not seeded yet");
+        require(game.participants.length >= 2, "Need at least 2 players");
         // To remove any bias from the order that players registered with, make
         // sure to shuffle them before starting the actual game
+        // NOTE: This is the same as `getRollingPlayers`
         address[] memory players = shuffledPlayers(game.participants, seed);
-        gameResults[gameId].players = players;
-        uint256[] storage rolls = gameResults[gameId].rolls;
 
+        // NOTE: This is the same as `getRolls`, however we don't use that as
+        // we'd spend too much gas on remembering the rolls - we're interested
+        // only in the outcome itself, which is the losing player
         uint256 roll = game.startingRoll;
+        uint256 rollCount = 0;
         while (roll > 0) {
             // NOTE: `roll` is always in the [1, game.startingRoll - 1] range
             // here, as we start if it's positive and we always use modulo,
             // starting from the `game.startingRoll`
             unchecked {
                 roll =
-                    uint256(keccak256(abi.encodePacked(rolls.length, seed))) %
+                    uint256(keccak256(abi.encodePacked(rollCount, seed))) %
                     roll;
-                rolls.push(roll + 1);
+                rollCount++;
             }
         }
+
+        // The last to roll is the one who lost
+        address loser = players[(rollCount - 1) % players.length];
+        gameResults[gameId].loser = loser;
+        // Saved for bookkeeping
+        gameResults[gameId].finalizedSeed = seed;
 
         return gameResults[gameId];
     }
@@ -450,9 +472,9 @@ contract ConfettiRoll is AccessControlEnumerable, Ownable, Pausable {
 
         GameResult storage results = simulateGame(gameId);
         require(isGameFinished(gameId), "Game not finished after simul.");
+        require(results.loser != address(0), "Finished game has no loser");
 
-        address loser = getLoser(results);
-        emit PlayerLost(gameId, loser);
+        emit PlayerLost(gameId, results.loser);
 
         // Tax the prize money for the treasury
         uint256 collectedBetTip = (game.poolBet * betTip) / FEE_PRECISION;
@@ -467,7 +489,7 @@ contract ConfettiRoll is AccessControlEnumerable, Ownable, Pausable {
             payableBet +
             // Taxed prize pool that's split among everyone
             (payableBet - treasuryShare) /
-            (results.players.length - 1);
+            (game.participants.length - 1);
     }
 
     function pause() public onlyOwner {

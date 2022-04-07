@@ -119,7 +119,7 @@ const Status = ({ connected }: StatusProps) => {
 
     async function fetchPendingGames() {
       const pendingGames = (await confettiRoll.getPendingGames(account)) || []
-      const results = await Promise.all(
+      return Promise.all(
         pendingGames
           .map((gameId: any) =>
             Promise.all([
@@ -128,32 +128,24 @@ const Status = ({ connected }: StatusProps) => {
               confettiRoll.getGameResults(gameId),
             ])
           )
-          .map(
-            async (
-              data: PromiseLike<[any, any, any]>
-            ): Promise<PendingGame> => {
-              const [gameId, game, results] = await data
-              const roundNum = game.roundNum
-              const seed = await confettiRoll.getSeed(roundNum)
-              const loser =
-                results?.rolls.length > 0
-                  ? await confettiRoll.getLoser(results)
-                  : undefined
+          .map(async (data: PromiseLike<[any, any, any]>) => {
+            const [gameId, game, results] = await data
+            const roundNum = game.roundNum
+            const seed = await confettiRoll.getSeed(roundNum)
+            const loser = results.loser
 
-              const state: GameState = seed.eq(0)
-                ? { t: 'Pending' }
-                : results.rolls.length == 0
-                ? { t: 'Playable' }
-                : { t: 'Finished', lost: loser == account }
+            const state: GameState = seed.eq(0)
+              ? { t: 'Pending' }
+              : loser.eq(0)
+              ? { t: 'Playable' }
+              : { t: 'Finished', lost: loser == account }
 
-              return { id: gameId, ...state }
-            }
-          )
+            return { id: gameId, ...state }
+          })
       )
-
-      setPendingGames(results)
     }
-    fetchPendingGames()
+
+    fetchPendingGames().then(setPendingGames)
   }, [signer, account, internalGames])
   const [rolls, setRolls] = useState<{
     startingRoll: number
@@ -220,12 +212,12 @@ const Status = ({ connected }: StatusProps) => {
                     }
                     library?.addListener(filter, callback)
                   })
-                  const [game, results] = await Promise.all([
+                  const [game, players, rolls] = await Promise.all([
                     confettiRoll.getGame(gameId),
-                    confettiRoll.getGameResults(gameId),
+                    confettiRoll.getRollingPlayers(gameId),
+                    confettiRoll.getRolls(gameId),
                   ])
 
-                  const { players, rolls } = results
                   const playerRolls = rolls.map((roll: any, idx: number) => ({
                     player: players[idx % players.length],
                     roll: Number(roll),
@@ -254,7 +246,7 @@ const Status = ({ connected }: StatusProps) => {
               'Approve $CFTI'
             ) : (
               <Flex>
-                <Text>Join game - 15</Text>
+                <Text>Join game - {`${defaultBet}`}</Text>
                 <Img h="27px" mt="6px" src="/cfti.png" pr="10px" />
               </Flex>
             )}
@@ -303,12 +295,12 @@ const Status = ({ connected }: StatusProps) => {
                       })
                     }
 
-                    const [game_, results] = await Promise.all([
+                    const [game_, players, rolls] = await Promise.all([
                       confettiRoll.getGame(game.id),
-                      confettiRoll.getGameResults(game.id),
+                      confettiRoll.getRollingPlayers(game.id),
+                      confettiRoll.getRolls(game.id),
                     ])
 
-                    const { players, rolls } = results
                     const playerRolls = rolls.map((roll: any, idx: number) => ({
                       player: players[idx % players.length],
                       roll: Number(roll),

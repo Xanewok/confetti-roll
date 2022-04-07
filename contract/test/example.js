@@ -24,12 +24,10 @@ async function balanceOf(address) {
 
 async function playerRolls(gameId) {
   const roll = await ConfettiRoll.deployed();
-  let results = await roll.getGameResults(gameId);
+  const players = await roll.getRollingPlayers(gameId);
+  const rolls = await roll.getRolls(gameId);
 
-  return results.rolls.map((val, idx) => ({
-    roll: val,
-    player: results.players[idx % results.players.length],
-  }));
+  return rolls.map((roll, idx) => ({ roll, player: players[idx % players.length] }));
 }
 
 async function setSeedForRound(roundNum, seed) {
@@ -88,10 +86,6 @@ contract("ConfettiRoll", (accounts) => {
     console.log(`Seed for ${roundNum}: ${await roll.getSeed(roundNum)}`);
     await roll.commenceGame(gameId);
     const rolls = await playerRolls(gameId);
-    console.log({ rolls });
-    const readRolls = (await roll.getRolls(gameId)).map(value => `${value}`);
-    console.log({readRolls});
-    throw new Error("hehe");
 
     for (const account of accounts.slice(0, 4)) {
       await balanceOf(account);
