@@ -89,6 +89,9 @@ contract("ConfettiRoll", (accounts) => {
     await roll.commenceGame(gameId);
     const rolls = await playerRolls(gameId);
     console.log({ rolls });
+    const readRolls = (await roll.getRolls(gameId)).map(value => `${value}`);
+    console.log({readRolls});
+    throw new Error("hehe");
 
     for (const account of accounts.slice(0, 4)) {
       await balanceOf(account);

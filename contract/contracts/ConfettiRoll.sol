@@ -158,6 +158,36 @@ contract ConfettiRoll is AccessControlEnumerable, Ownable, Pausable {
         return result.players[loserIdx];
     }
 
+    function getRolls(bytes32 gameId) public view returns (uint256[] memory) {
+        Game memory game = games[gameId];
+        uint256 seed = getSeed(game.roundNum);
+        require(seed != 0, "Game not seeded yet");
+        require(game.participants.length >= 2, "Need at least 2 players");
+        // NOTE: The part below is the same as `simulateGame` only with
+        // remembering the roll values (which are originally not to save gas).
+
+        // The upper bound for the number of rolls is the starting roll value
+        uint256[] memory rolls = new uint256[](game.startingRoll);
+
+        uint256 roll = game.startingRoll;
+        uint256 rollCount = 0;
+        while (roll > 0) {
+            // NOTE: `roll` is always in the [1, game.startingRoll - 1] range
+            // here, as we start if it's positive and we always use modulo,
+            // starting from the `game.startingRoll`
+            roll = uint256(keccak256(abi.encodePacked(rollCount, seed))) % roll;
+            rolls[rollCount] = roll + 1;
+            rollCount++;
+        }
+        // NOTE: This is meant to be executed as read-only function, so it's fine
+        // to copy over the results to truncate the rolls array;
+        uint256[] memory returnedRolls = new uint256[](rollCount);
+        for (uint256 i = 0; i < rollCount; i++) {
+            returnedRolls[i] = rolls[rollCount];
+        }
+        return returnedRolls;
+    }
+
     /// @notice Returns a list of outstanding games for the player
     function getPendingGames(address player)
         public

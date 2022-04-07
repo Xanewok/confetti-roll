@@ -1,6 +1,7 @@
 {
   "scripts": {
     "compile": "truffle compile",
+    "test": "truffle test",
     "migrate": "truffle migrate"
   },
   "license": "MIT",

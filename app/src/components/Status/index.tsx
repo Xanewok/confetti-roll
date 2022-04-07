@@ -248,11 +248,16 @@ const Status = ({ connected }: StatusProps) => {
               }
             }}
           >
-            {pendingGlobalGame
-              ? pendingGlobalGame.t
-              : tokenAllowance?.lt(defaultBet || 0)
-              ? 'Approve $CFTI'
-              : 'Join global game'}
+            {pendingGlobalGame ? (
+              pendingGlobalGame.t
+            ) : tokenAllowance?.lt(defaultBet || 0) ? (
+              'Approve $CFTI'
+            ) : (
+              <Flex>
+                <Text>Join game - 15</Text>
+                <Img h="27px" mt="6px" src="/cfti.png" pr="10px" />
+              </Flex>
+            )}
           </Button>
           <Text fontSize="md" fontWeight="bold" color={connected ? '' : 'gray'}>
             Recent games
