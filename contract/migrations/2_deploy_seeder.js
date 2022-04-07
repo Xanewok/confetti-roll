@@ -11,8 +11,8 @@ module.exports = async function (deployer, network, accounts) {
 
     await deployer.deploy(RpSeeder, seederV2Address, seedStorageAddress);
   } else {
-    await deployer.deploy(TestSeederV2);
     await deployer.deploy(TestSeedStorage);
+    await deployer.deploy(TestSeederV2, TestSeedStorage.address);
 
     await deployer.deploy(RpSeeder, TestSeederV2.address, TestSeedStorage.address);
   }

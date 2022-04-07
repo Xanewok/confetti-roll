@@ -52,7 +52,7 @@ const Home: NextPage = () => {
     return value?.[0]
   }
 
-  const nextSeedBatch = Number(useNextSeedBatch()) / 1000;
+  const nextSeedBatch = Number(useNextSeedBatch()) * 1000;
 
   const doSeed = useCallback(() => {
     const contract = new Contract(TOKEN_ADDRESS['SEEDER'], SEEDERV2_ABI)
@@ -181,7 +181,7 @@ const Home: NextPage = () => {
           the contract yourself, it&apos;s at{' '}
           <Link
             color="purple.900"
-            href={`https://etherscan.io/address/${TOKEN_ADDRESS['CONFETTI_ROLL']}`}
+            href={`https://rinkeby.etherscan.io/address/${TOKEN_ADDRESS['CONFETTI_ROLL']}`}
           >
             {`${TOKEN_ADDRESS['CONFETTI_ROLL'].slice(0, 6)}...${TOKEN_ADDRESS[
               'CONFETTI_ROLL'
@@ -193,7 +193,7 @@ const Home: NextPage = () => {
           You&apos;re interacting with the contract at your own responsibility.
         </Text>
         <Text fontSize="xs" color="white">
-         Game entry bets include a 0.25% service fee.
+         Game entry bets include a 0.5% service fee.
         </Text>
       </Box>
       <Box mt="20px" mb="5px" textAlign="center">

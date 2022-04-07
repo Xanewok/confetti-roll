@@ -26,6 +26,7 @@ import { useState, useEffect, useMemo, useCallback } from 'react'
 import { Contract } from '@ethersproject/contracts'
 import { keccak256 } from 'ethers/utils/solidity'
 import DeathRoll, { PlayerRoll } from '../DeathRoll'
+import { ethers } from 'ethers'
 
 type StatusProps = {
   connected: any
@@ -99,6 +100,7 @@ const Status = ({ connected }: StatusProps) => {
   const globalGame = useConfettiRoll('getGame', globalGameId)
   const currentRound = useConfettiRoll('currentRound')
   const defaultBet = useConfettiRoll('defaultBet')
+  const defaultMaxParticipants = useConfettiRoll('defaultMaxParticipants')
   const pendingRewards = useConfettiRoll('getPendingRewards', account)
   const internalGames = useConfettiRoll('getPendingGames', account)
 
@@ -136,7 +138,7 @@ const Status = ({ connected }: StatusProps) => {
 
             const state: GameState = seed.eq(0)
               ? { t: 'Pending' }
-              : loser.eq(0)
+              : loser == ethers.constants.AddressZero
               ? { t: 'Playable' }
               : { t: 'Finished', lost: loser == account }
 
@@ -177,7 +179,12 @@ const Status = ({ connected }: StatusProps) => {
               ? `${globalGameId.slice(0, 6)}...${globalGameId.slice(-4)}`
               : 'Unknown'}
           </Text>
-          <Text>Participants: {(globalGame?.participants || []).length}</Text>
+          <Text>
+            Participants:{' '}
+            {`${(globalGame?.participants || []).length}/${
+              defaultMaxParticipants || 0
+            }`}
+          </Text>
           <Button
             size="xs"
             pb="6px"
@@ -245,9 +252,19 @@ const Status = ({ connected }: StatusProps) => {
             ) : tokenAllowance?.lt(defaultBet || 0) ? (
               'Approve $CFTI'
             ) : (
-              <Flex>
-                <Text>Join game - {`${defaultBet}`}</Text>
-                <Img h="27px" mt="6px" src="/cfti.png" pr="10px" />
+              <Flex justifyItems={'right'}>
+                <Text>Join game</Text>
+                <Text ml="min(0.5em, 5vw)">
+                  {(Number(defaultBet || 0) / 10 ** 18)
+                    .toPrecision(4)
+                    .replace('.00', '')}
+                </Text>
+                <Img
+                  style={{ transform: 'scale(0.85)' }}
+                  h="27px"
+                  mt="6px"
+                  src="/cfti.png"
+                />
               </Flex>
             )}
           </Button>
@@ -317,7 +334,7 @@ const Status = ({ connected }: StatusProps) => {
               </li>
             ))}
           </ul>
-          -----------
+          {/* -----------
           <Button
             size="xs"
             pb="6px"
@@ -355,7 +372,7 @@ const Status = ({ connected }: StatusProps) => {
             }}
           >
             Advance!
-          </Button>
+          </Button> */}
         </Flex>
       </Box>
       {connected && (
@@ -378,13 +395,15 @@ const Status = ({ connected }: StatusProps) => {
                 }}
               >
                 <Img h="27px" mt="6px" src="/cfti.png" pr="10px" />
-                <Text>{`${(pendingRewards / 10 ** 18).toFixed(3)}`}</Text>
+                <Text>{`${(Number(pendingRewards) / 10 ** 18).toPrecision(
+                  3
+                )}`}</Text>
               </Button>
             </Tooltip>
           </Flex>
           <Flex>
             <Img h="27px" mt="6px" src="/cfti.png" pr="10px" />
-            <Text>{`${(Number(cftiBalance) / 10 ** 18).toFixed(3)}`}</Text>
+            <Text>{`${(Number(cftiBalance) / 10 ** 18).toPrecision(4)}`}</Text>
           </Flex>
           <DeathRoll
             startingRoll={rolls.startingRoll}
