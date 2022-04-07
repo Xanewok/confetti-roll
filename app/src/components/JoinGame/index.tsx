@@ -5,7 +5,7 @@ import {
   useTokenAllowance,
   useTokenBalance,
 } from '@usedapp/core'
-import { useCallback, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import {
   CONFETTI_CONTRACT,
   CONFETTI_ROLL_CONTRACT,
@@ -16,10 +16,9 @@ import { useConfettiRoll, useNextSeed, useSigner } from '../../hooks'
 type JoinGameProps = { game: any }
 
 export const JoinGame = (props: JoinGameProps) => {
-  const game = props.game || {}
-  //   console.log({ game })
+  const game = useMemo(() => props.game || {}, [props.game])
 
-  const { library, account } = useEthers()
+  const { account } = useEthers()
   const allowance = useTokenAllowance(
     TOKEN_ADDRESS['CFTI'],
     account,
@@ -51,17 +50,15 @@ export const JoinGame = (props: JoinGameProps) => {
   const defaultBet = useConfettiRoll('defaultBet')
   const defaultMaxParticipants = useConfettiRoll('defaultMaxParticipants')
 
-  const poolBet = game.poolBet || defaultBet || 0
+  const poolBet = (game.poolBet?.eq(0) ? defaultBet : game.poolBet) || 0
   const maxParticipants = game.maxParticipants || defaultMaxParticipants
-  //   const globalGameId = useConfettiRoll('currentGlobalGameId')
-  //   const globalGame = useConfettiRoll('getGame', globalGameId)
-  // Possible button states:
-  // 1. $CFTI not approved
+  // The flow is as follows
+  // 1. $CFTI not yet approved
   // 2. Game is accepting new sign-ups:
   //    - the maximum participants limit is not yet met
   //    - enough time before seeding happens (we respect the frontrunning safeguard)
   //    - we have enough money
-  const notApproved = allowance?.lt(poolBet)
+  const approved = allowance?.gte(poolBet)
   const gameIsFull =
     game?.participants?.length && game.participants.length >= maxParticipants
   const alreadyJoined =
@@ -70,12 +67,13 @@ export const JoinGame = (props: JoinGameProps) => {
     game.participants.some(
       (player: any) => account.toLowerCase() == player.toString().toLowerCase()
     )
-  const seedImminent = timeTillSeed <= 60 * 1000
+  const seedImminent = timeTillSeed <= 90 * 1000
+  const timeTillClose = timeTillSeed - 90 * 1000
 
   const onClick = useCallback(() => {
     if (!game || !signer) {
       /* no-op */
-    } else if (notApproved) {
+    } else if (!approved) {
       CONFETTI_CONTRACT.connect(signer).approve(
         TOKEN_ADDRESS['CONFETTI_ROLL'],
         '2000000000000000000000000'
@@ -85,11 +83,14 @@ export const JoinGame = (props: JoinGameProps) => {
         .joinGlobalGame()
         .catch(showErrorToast)
     }
-  }, [game, notApproved, showErrorToast, signer])
-  const disabled = !signer || gameIsFull || seedImminent || alreadyJoined
+  }, [game, approved, showErrorToast, signer])
+  const disabled =
+    !signer ||
+    (!allowance || approved &&
+      (gameIsFull || seedImminent || alreadyJoined || balance?.lt(poolBet)))
   const label = !game ? (
     'Loading'
-  ) : notApproved ? (
+  ) : allowance && !approved ? (
     'Approve $CFTI'
   ) : gameIsFull ? (
     'Game is full'
@@ -107,6 +108,9 @@ export const JoinGame = (props: JoinGameProps) => {
         mt="6px"
         src="/cfti.png"
       />
+      {timeTillClose < 15 * 1000 && (
+        <Text ml="0.5rem">({`${Math.round(timeTillClose / 1000)}`}s)</Text>
+      )}
     </Flex>
   )
   return (
@@ -116,42 +120,8 @@ export const JoinGame = (props: JoinGameProps) => {
       m="1em 3em 0.5em 3em"
       isDisabled={!account || disabled}
       onClick={onClick}
-      //       onClick={async () => {
-      //         const signer = account && library?.getSigner()
-      //         if (signer) {
-      //           const confettiRoll = CONFETTI_ROLL_CONTRACT.connect(signer)
-      //           const confetti = CONFETTI_CONTRACT.connect(signer)
-
-      //           if (game?.t == 'Playable') {
-      //             await confettiRoll.commenceGame(game.id)
-      //           } else if (allowance?.gte(defaultBet)) {
-      //             await confettiRoll.joinGlobalGame().catch(showErrorToast)
-      //           } else {
-      //             await confetti.approve(
-      //               TOKEN_ADDRESS['CONFETTI_ROLL'],
-      //               '2000000000000000000000000'
-      //             )
-      //           }
-      //         }
-      //       }}
     >
       {label}
-      {/* {game && allowance?.lt(defaultBet) ? (
-        'Approve $CFTI'
-      ) : (
-        <Flex justifyItems={'right'}>
-          <Text>Sign up:</Text>
-          <Text ml="min(0.5em, 5vw)">
-            {(Number(defaultBet) / 10 ** 18).toPrecision(4).replace('.00', '')}
-          </Text>
-          <Img
-            style={{ transform: 'scale(0.85)' }}
-            h="27px"
-            mt="6px"
-            src="/cfti.png"
-          />
-        </Flex> */}
-      {/* )} */}
     </Button>
   )
 }

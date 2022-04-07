@@ -221,15 +221,21 @@ const Status = ({ connected }: StatusProps) => {
                 }}
               >
                 <Img h="27px" mt="6px" src="/cfti.png" pr="10px" />
-                <Text>{`${(Number(pendingRewards) / 10 ** 18).toPrecision(
-                  3
-                )}`}</Text>
+                <Text>
+                  {isNaN(Number(pendingRewards))
+                    ? '...'
+                    : `${(Number(pendingRewards) / 10 ** 18).toPrecision(3)}`}
+                </Text>
               </Button>
             </Tooltip>
           </Flex>
           <Flex>
             <Img h="27px" mt="6px" src="/cfti.png" pr="10px" />
-            <Text>{`${(Number(balance) / 10 ** 18).toPrecision(4)}`}</Text>
+            <Text>
+              {isNaN(Number(balance))
+                ? '...'
+                : `${(Number(balance) / 10 ** 18).toPrecision(4)}`}
+            </Text>
           </Flex>
           <DeathRoll
             startingRoll={rolls.startingRoll}

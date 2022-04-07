@@ -103,11 +103,6 @@ const DeathRoll = (props: {
     if (!isOpen || rolls.length == 0) return
 
     const timer = setInterval(() => {
-      console.log({
-        displayedRolls,
-        rollsLength: rolls.length,
-        needsPlayerAction,
-      })
       if (!needsPlayerAction && displayedRolls < rolls.length) {
         setDisplayedRolls((count) => count + 1)
         setNeedsPlayerAction(
