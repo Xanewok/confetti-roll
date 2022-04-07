@@ -29,4 +29,8 @@ contract RpSeeder is ISeederV2, ISeedStorage {
     function getRandomness(bytes32 key) external override view returns (uint256) {
         return seedStorage.getRandomness(key);
     }
+
+    function executeRequestMulti() external {
+        return seederV2.executeRequestMulti();
+    }
 }

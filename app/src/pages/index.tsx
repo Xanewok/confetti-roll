@@ -10,12 +10,12 @@ import {
   Link,
 } from '@chakra-ui/react'
 import type { NextPage } from 'next'
-import { useCall, useEthers } from '@usedapp/core'
-import { Contract } from '@ethersproject/contracts'
-import { TOKEN_ADDRESS, SEEDERV2_ABI } from '../constants'
+import { useCall, useEthers, useInterval } from '@usedapp/core'
+import { TOKEN_ADDRESS, SEEDERV2_CONTRACT } from '../constants'
 import Status from '../components/Status'
 import { useEffect, useState } from 'react'
 import { useCallback } from 'react'
+import { useNextSeed } from '../hooks'
 
 // TODO: Boss table for calculating your CFTI earnings based on boss
 // TODO: Move inline styles into chakra theme
@@ -36,39 +36,18 @@ const Home: NextPage = () => {
     library,
   } = useEthers()
 
-  const useNextSeedBatch = () => {
-    const contract = new Contract(TOKEN_ADDRESS['SEEDER'], SEEDERV2_ABI)
-    const { value, error } =
-      useCall({
-        contract,
-        method: 'getNextAvailableBatch',
-        args: [],
-      }) ?? {}
-
-    if (error) {
-      console.error(error.message)
-      return null
-    }
-    return value?.[0]
-  }
-
-  const nextSeedBatch = Number(useNextSeedBatch()) * 1000;
+  const nextSeedBatch = Number(useNextSeed())
+  const [timeTillSeed, setTimeTillSeed] = useState(NaN)
+  useInterval(() => {
+    setTimeTillSeed(nextSeedBatch * 1000 - new Date().getTime())
+  }, 1000)
 
   const doSeed = useCallback(() => {
-    const contract = new Contract(TOKEN_ADDRESS['SEEDER'], SEEDERV2_ABI)
     const signer = account && library?.getSigner(account)
     if (signer) {
-      contract.connect(signer).executeRequestMulti() // from SeederV2
+      SEEDERV2_CONTRACT.connect(signer).executeRequestMulti() // from SeederV2
     }
   }, [account, library])
-
-  const [timeNow, setTimeNow] = useState(new Date().getTime())
-  useEffect(() => {
-    const timer = setInterval(() => setTimeNow(new Date().getTime()), 1000)
-    return () => clearInterval(timer)
-  }, [])
-
-  const timeTillSeed = nextSeedBatch - timeNow
 
   useEffect(() => {
     if (!active) {
@@ -107,7 +86,7 @@ const Home: NextPage = () => {
               size="xs"
               pb="6px"
               mr="20px"
-              isDisabled={timeTillSeed > 0}
+              isDisabled={!account || isNaN(nextSeedBatch) || timeTillSeed > 0}
               onClick={doSeed}
             >
               Next seed{' '}
@@ -193,12 +172,12 @@ const Home: NextPage = () => {
           You&apos;re interacting with the contract at your own responsibility.
         </Text>
         <Text fontSize="xs" color="white">
-         Game entry bets include a 0.5% service fee.
+          Game entry bets include a 0.5% service fee.
         </Text>
       </Box>
       <Box mt="20px" mb="5px" textAlign="center">
         <Text fontSize="xs" color="white">
-          Based on RP {' '}
+          Based on RP{' '}
           <Link
             color="purple.900"
             href="https://raidpartytracker.eth.limo"
@@ -206,7 +185,7 @@ const Home: NextPage = () => {
           >
             tracker{' '}
           </Link>
-           by:{' '}
+          by:{' '}
           <Link
             color="purple.900"
             href="https://oktal.eth.link"
