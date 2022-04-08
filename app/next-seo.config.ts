@@ -1,5 +1,5 @@
-export const title = 'Raid Party Tracker'
-const description = 'Raid Party Tracker is a tool for monitoring your current CFTI yield.'
+export const title = 'Raid Party Death roll'
+const description = 'Raid Party Death roll is a mini-game where you play with your hard-earned CFTI.'
 const url = 'https://raid.party'
 
 const SEO = {
@@ -22,8 +22,8 @@ const SEO = {
     },
     twitter: {
         cardType: 'summary_large_image',
-        handle: '@oktalize',
-        site: '@oktalize'
+        handle: '@xanecrypto',
+        site: '@xanecrypto'
     },
     additionalLinkTags: [
         {

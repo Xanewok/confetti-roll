@@ -1,8 +1,9 @@
 This is a tracking website for the [Raid Party](https://raid.party/).
+Based on https://github.com/Oktalize/raidparty-helper.
 
 ## Setup
 ```
-git clone https://github.com/Oktalize/raidparty-helper
+git clone https://github.com/Xanewok/confetti-roll
 ```
 
 ## Getting Started
