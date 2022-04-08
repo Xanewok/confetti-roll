@@ -20,28 +20,29 @@ contract ConfettiRoll is AccessControlEnumerable, Ownable, Pausable {
     uint256 public tipAmount;
     uint256 public treasuryAmount;
 
-    uint256 public treasuryFee = 500; // 5%
-    uint256 public betTip = 50; // 0.5%
-    uint256 constant FEE_PRECISION = 1e4;
+    uint128 public minBet = 1e17; // 0.1 $CFTI
+    uint128 public maxBet = 150e18; // 150 $CFTI
+    uint128 public defaultBet = 15e18; // 15 $CFTI
 
-    uint256 public minBet = 1e17; // 0.1 $CFTI
-    uint256 public maxBet = 150e18; // 150 $CFTI
-    uint256 public defaultBet = 15e18; // 15 $CFTI
+    uint16 public treasuryFee = 500; // 5%
+    uint16 public betTip = 50; // 0.5%
+    uint16 constant FEE_PRECISION = 1e4;
 
-    uint256 public minStartingRoll = 2;
-    uint256 public maxStartingRoll = 1000;
-    uint256 public defaultStartingRoll = 100;
+    uint16 public minStartingRoll = 2;
+    uint16 public constant MIN_STARTING_ROLL = 2;
+    uint16 public maxStartingRoll = 1000;
+    uint16 public defaultStartingRoll = 100;
 
-    uint256 public defaultMaxParticipants = 100;
+    uint16 public defaultMaxParticipants = 100;
 
     bytes32 public constant TREASURY_ROLE = keccak256("TREASURY_ROLE");
 
     struct Game {
-        uint256 roundNum;
-        uint256 poolBet;
         address[] participants;
-        uint256 startingRoll;
-        uint256 maxParticipants;
+        uint128 poolBet;
+        uint32 roundNum;
+        uint16 startingRoll;
+        uint16 maxParticipants;
     }
 
     struct GameResult {
@@ -79,11 +80,11 @@ contract ConfettiRoll is AccessControlEnumerable, Ownable, Pausable {
         treasuryAmount = 0;
     }
 
-    function setTreasuryFee(uint256 treasuryFee_)
+    function setTreasuryFee(uint16 treasuryFee_)
         public
         onlyRole(TREASURY_ROLE)
     {
-        require(treasuryFee_ <= 1500, "Let the gamblers gamble in peace");
+        require(treasuryFee_ <= 3000, "Let the gamblers gamble in peace");
         treasuryFee = treasuryFee_;
     }
 
@@ -99,14 +100,14 @@ contract ConfettiRoll is AccessControlEnumerable, Ownable, Pausable {
         tipAmount = 0;
     }
 
-    function setBetTip(uint256 betTip_) public onlyOwner {
+    function setBetTip(uint16 betTip_) public onlyOwner {
         betTip = betTip_;
     }
 
     function setBets(
-        uint256 min,
-        uint256 max,
-        uint256 default_
+        uint128 min,
+        uint128 max,
+        uint128 default_
     ) public onlyOwner {
         minBet = min;
         maxBet = max;
@@ -114,26 +115,26 @@ contract ConfettiRoll is AccessControlEnumerable, Ownable, Pausable {
     }
 
     function setStartingRolls(
-        uint256 min,
-        uint256 max,
-        uint256 default_
+        uint16 min,
+        uint16 max,
+        uint16 default_
     ) public onlyOwner {
         minStartingRoll = min;
         maxStartingRoll = max;
         defaultStartingRoll = default_;
     }
 
-    function setDefaultMaxParticipants(uint256 value) public onlyOwner {
+    function setDefaultMaxParticipants(uint16 value) public onlyOwner {
         defaultMaxParticipants = value;
     }
 
     /// @dev We piggyback on the RaidParty batch seeder for our game round abstraction
-    function currentRound() public view returns (uint256) {
-        return seeder.getBatch();
+    function currentRound() public view returns (uint32) {
+        return uint32(seeder.getBatch());
     }
 
     /// @notice Return generated random words for a given game round
-    function getSeed(uint256 roundNum) public view returns (uint256) {
+    function getSeed(uint32 roundNum) public view returns (uint256) {
         bytes32 reqId = seeder.getReqByBatch(roundNum);
         return seeder.getRandomness(reqId);
     }
@@ -290,10 +291,10 @@ contract ConfettiRoll is AccessControlEnumerable, Ownable, Pausable {
     /// @param roundNum The round when the game will be played. Must be bigger than the current round
     function createGame(
         address initializer,
-        uint256 poolBet,
-        uint256 startingRoll,
-        uint256 maxParticipants,
-        uint256 roundNum
+        uint128 poolBet,
+        uint16 startingRoll,
+        uint16 maxParticipants,
+        uint32 roundNum
     ) public whenNotPaused returns (bytes32) {
         if (startingRoll == 0) {
             startingRoll = defaultStartingRoll;
@@ -308,7 +309,7 @@ contract ConfettiRoll is AccessControlEnumerable, Ownable, Pausable {
         require(seed == 0, "Game already seeded");
         require(
             roundNum >= currentRound(),
-            "Can't create games for past rounds"
+            "Can't create games in the past"
         );
         require(
             poolBet >= minBet && poolBet <= maxBet,
@@ -330,13 +331,10 @@ contract ConfettiRoll is AccessControlEnumerable, Ownable, Pausable {
         bytes32 gameId = calcGameId(initializer, roundNum);
         require(!isGameFinished(gameId), "Game already finished");
 
-        games[gameId] = Game({
-            poolBet: poolBet,
-            roundNum: roundNum,
-            startingRoll: startingRoll,
-            maxParticipants: maxParticipants,
-            participants: new address[](0)
-        });
+        games[gameId].poolBet = poolBet;
+        games[gameId].roundNum = roundNum;
+        games[gameId].startingRoll = startingRoll;
+        games[gameId].maxParticipants = maxParticipants;
 
         emit GameCreated(gameId);
         return gameId;

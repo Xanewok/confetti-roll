@@ -5,6 +5,8 @@ const TestSeederV2 = artifacts.require("TestSeederV2");
 const TestSeedStorage = artifacts.require("TestSeedStorage");
 const ConfettiRoll = artifacts.require("ConfettiRoll");
 
+const { toBN } = web3.utils;
+
 // Returns a current timestamp in *seconds* - similar to `block.timestamp`.
 const timestamp = () => Math.trunc(new Date().getTime() / 1000);
 
@@ -115,7 +117,7 @@ contract("ConfettiRoll", (accounts) => {
     const betSize = "10000000000000000000"; // 10 $CFTI
     const startingRoll = 420;
     const maxParticipants = 10;
-    await roll.createGame(accounts[0], betSize, startingRoll, maxParticipants, roundNum);
+    const receipt = await roll.createGame(accounts[0], betSize, startingRoll, maxParticipants, roundNum);
 
     const gameId = await roll.calcGameId(accounts[0], roundNum);
     await roll.joinGame(gameId, { from: accounts[0] });
