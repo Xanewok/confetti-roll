@@ -22,18 +22,17 @@ contract ConfettiRoll is AccessControlEnumerable, Ownable, Pausable {
 
     uint128 public minBet = 1e17; // 0.1 $CFTI
     uint128 public maxBet = 150e18; // 150 $CFTI
-    uint128 public defaultBet = 15e18; // 15 $CFTI
+    uint128 public defaultBet = 30e18; // 30 $CFTI
 
     uint16 public treasuryFee = 500; // 5%
     uint16 public betTip = 50; // 0.5%
     uint16 constant FEE_PRECISION = 1e4;
 
     uint16 public minStartingRoll = 2;
-    uint16 public constant MIN_STARTING_ROLL = 2;
     uint16 public maxStartingRoll = 1000;
     uint16 public defaultStartingRoll = 100;
 
-    uint16 public defaultMaxParticipants = 100;
+    uint16 public defaultMaxParticipants = 10;
 
     bytes32 public constant TREASURY_ROLE = keccak256("TREASURY_ROLE");
 

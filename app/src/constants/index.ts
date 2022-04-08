@@ -5,9 +5,9 @@ import ConfettiRoll from '../../../contract/build/contracts/ConfettiRoll.json'
 import ISeederV2 from '../../../contract/build/contracts/ISeederV2.json'
 
 export const TOKEN_ADDRESS = {
-  CFTI: '0xAEf9e6c638e1Bc76cb4780514B7D6DC96722A3ee',
-  SEEDER: '0xf34b97eAAa9cE5f9DC9F0A146cB4b2969Ee82FB8',
-  CONFETTI_ROLL: '0xEb631D1a97B5B488B7f3fDCc98A123ab52442E2A',
+  CFTI: '0xCfef8857E9C80e3440A823971420F7Fa5F62f020',
+  SEEDER: '0xD9bc167E6C37b29F65E708C4Bb1D299937dFF718',
+  CONFETTI_ROLL: '0x1fAaC523223fBf79667ab621653bd378093E8693',
 }
 
 export const CONFETTI_CONTRACT = new Contract(TOKEN_ADDRESS['CFTI'], ERC20.abi)

@@ -123,10 +123,10 @@ const Home: NextPage = () => {
           </Tooltip>
         </Flex>
       </Flex>
-      {account && chainId !== 4 && (
+      {account && chainId !== 1 && (
         <>
           <Text color="red" textAlign="center" fontSize="xl">
-            Error: Please connect to Ethereum Rinkeby Testnet.
+            Error: Please connect to Ethereum Mainnet.
           </Text>
         </>
       )}
@@ -160,7 +160,7 @@ const Home: NextPage = () => {
           the contract yourself, it&apos;s at{' '}
           <Link
             color="purple.900"
-            href={`https://rinkeby.etherscan.io/address/${TOKEN_ADDRESS['CONFETTI_ROLL']}`}
+            href={`https://etherscan.io/address/${TOKEN_ADDRESS['CONFETTI_ROLL']}`}
           >
             {`${TOKEN_ADDRESS['CONFETTI_ROLL'].slice(0, 6)}...${TOKEN_ADDRESS[
               'CONFETTI_ROLL'
