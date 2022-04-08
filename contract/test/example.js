@@ -150,11 +150,10 @@ contract("ConfettiRoll", (accounts) => {
     it("asserts that game sign-ups are closed before the seed may be ready", async () => {
       const seederV2 = await TestSeederV2.deployed();
       const roll = await ConfettiRoll.deployed();
-      const roundNum = await roll.currentRound();
 
       // Seed ready in 5 seconds - to prevent possible front-running we should
       // disallow joining games
-      await seederV2.setLastBatchTimestamp(timestamp() + 5);
+      await seederV2.setLastBatchTimestamp(timestamp() -30);
       await assert.rejects(() => roll.joinGlobalGame());
       // But 1 minute prior should be safe
       await seederV2.setLastBatchTimestamp(timestamp() + 61);
