@@ -100,27 +100,29 @@ const customTheme = extendTheme({
             },
             variants: {
                 solid: {
-                    color: 'white',
-                    bg: '#7c41ea',
-                    boxShadow: '0 -3px 0 0 #703bd3, 0 3px 0 0 #4c2398, -3px 0 0 0 #6331c0, 3px 0 0 0 #6331c0, 0 0 0 3px #0f0c1b, 0 -6px 0 0 #0f0c1b, 0 6px 0 0 #0f0c1b, -6px 0 0 0 #0f0c1b, 6px 0 0 0 #0f0c1b',
+                    textColor: 'white',
+                    bg: "rgb(49 54 176)",
+                    boxShadow: '0 -2px 0 0 #474cc3, 0 2px 0 0 #22268e, -2px 0 0 0 #393eba, 2px 0 0 0 #393eba, 0 0 0 2px #0f0c1b, 0 -4px 0 0 #0f0c1b, 0 4px 0 0 #0f0c1b, -4px 0 0 0 #0f0c1b, 4px 0 0 0 #0f0c1b',
                     borderRadius: '1px',
                     _focus: {
-                        boxShadow: '0 -3px 0 0 #703bd3, 0 3px 0 0 #4c2398, -3px 0 0 0 #6331c0, 3px 0 0 0 #6331c0, 0 0 0 3px #0f0c1b, 0 -6px 0 0 #0f0c1b, 0 6px 0 0 #0f0c1b, -6px 0 0 0 #0f0c1b, 6px 0 0 0 #0f0c1b'
+                        boxShadow: '0 -2px 0 0 #474cc3, 0 2px 0 0 #22268e, -2px 0 0 0 #393eba, 2px 0 0 0 #393eba, 0 0 0 2px #0f0c1b, 0 -4px 0 0 #0f0c1b, 0 4px 0 0 #0f0c1b, -4px 0 0 0 #0f0c1b, 4px 0 0 0 #0f0c1b',
                     },
                     _active: {
-                        bg: '#7c41ea'
+                        bg: "rgb(49 54 176)",
+                        filter: "brightness(1.5)",
+                        boxShadow: '0 -2px 0 0 #474cc3, 0 2px 0 0 #22268e, -2px 0 0 0 #393eba, 2px 0 0 0 #393eba, 0 0 0 2px #0f0c1b, 0 -4px 0 0 #0f0c1b, 0 4px 0 0 #0f0c1b, -4px 0 0 0 #0f0c1b, 4px 0 0 0 #0f0c1b',
                     },
                     _hover: {
-                        bg: '#7c41ea',
-                        transform: 'scale(1.07)',
+                        bg: "rgb(49 54 176)",
+                        filter: "brightness(1.25)",
                         _disabled: {
-                            bg: '#7c41ea',
-                            transform: 'none'
+                            bg: "rgb(49 54 176)",
+                            filter: "brightness(1)",
                         }
                     },
                     _disabled: {
-                        opacity: 1,
-                        boxShadow: '0 -3px 0 0 #703bd3, 0 3px 0 0 #4c2398, -3px 0 0 0 #6331c0, 3px 0 0 0 #6331c0, 0 0 0 3px #0f0c1b, 0 -6px 0 0 #0f0c1b, 0 6px 0 0 #0f0c1b, -6px 0 0 0 #0f0c1b, 6px 0 0 0 #0f0c1b'
+                        opacity: 0.80,
+                        boxShadow: '0 -2px 0 0 #474cc3, 0 2px 0 0 #22268e, -2px 0 0 0 #393eba, 2px 0 0 0 #393eba, 0 0 0 2px #0f0c1b, 0 -4px 0 0 #0f0c1b, 0 4px 0 0 #0f0c1b, -4px 0 0 0 #0f0c1b, 4px 0 0 0 #0f0c1b',
                     }
                 }
             }
