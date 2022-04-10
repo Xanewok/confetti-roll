@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react'
 import BannerBox from '../Global/BannerBox'
 
-import { BOSS_TYPES } from '../../constants'
+import { BOSS_TYPES, roundRewards } from '../../contracts/raid'
 import { useState, useEffect } from 'react'
 import { useInterval } from '../../hooks/useInterval'
 import {
@@ -21,12 +21,14 @@ import {
   BossCrownMythic,
   BossCrownStrong,
 } from './BossCrowns'
+import { AVG_BLOCK_TIME, CFTI_DECIMALS } from '../../constants'
 
 type StatusProps = {
   bossTypeNum?: any
   bossHealth: any
   bossMaxHealth: any
   raidDmg: any
+  avgYield: any
   multiplier: any
   unclaimedBalance: any
   tokenBalance: any
@@ -43,19 +45,14 @@ const calculateCFTI = ({
   blocks: any
   multiplier: any
   DPB: any
-}) => {
-  if (blocks) {
-    return (blocks * multiplier * DPB) / 10 ** 18
-  } else {
-    return 0
-  }
-}
+}) => (blocks ? roundRewards(blocks, multiplier, DPB) / 10 ** CFTI_DECIMALS : 0)
 
 const Status = ({
   bossTypeNum,
   bossHealth,
   bossMaxHealth,
   raidDmg,
+  avgYield,
   multiplier,
   unclaimedBalance,
   tokenBalance,
@@ -64,7 +61,6 @@ const Status = ({
   usdToggled,
 }: StatusProps) => {
   const [counter, setCounter] = useState(0)
-  const avgBlockTime = 14
 
   useInterval(() => {
     if (counter > 0) {
@@ -73,11 +69,11 @@ const Status = ({
   }, 1000)
 
   useEffect(() => {
-    setCounter((bossHealth + 1) * avgBlockTime)
+    setCounter((bossHealth + 1) * AVG_BLOCK_TIME)
   }, [bossHealth])
 
   const bossPercent = () => {
-    return (bossHealth / bossMaxHealth) * 100
+    return (bossHealth / AVG_BLOCK_TIME) * 100
   }
 
   const bossPercentInverse = () => {
@@ -171,6 +167,19 @@ const Status = ({
             {timeLeft(counter)}
           </Text>
         </Text>
+        <div style={{ marginTop: '1em' }}>
+          <Text fontSize="md" fontWeight="bold" color={connected ? '' : 'gray'}>
+            Avg Daily Earnings:
+          </Text>
+          <Text color={connected ? '' : 'gray'}>
+            <Text as="span" fontSize="md" color={connected ? 'white' : 'gray'}>
+              {usdToggled
+                ? ((avgYield * usdPrice) / 10 ** CFTI_DECIMALS).toFixed(2)
+                : (avgYield / 10 ** CFTI_DECIMALS).toFixed(2)}
+            </Text>{' '}
+            {usdToggled ? 'USD' : 'CFTI'}
+          </Text>
+        </div>
       </Box>
       {connected && (
         <Flex justify="space-between">

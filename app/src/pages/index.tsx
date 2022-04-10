@@ -23,6 +23,7 @@ import Status from '../components/Status'
 import { useEffect, useState } from 'react'
 import Donate from '../components/Donate'
 import { sqrtPrice } from '../utils'
+import { useUnclaimedCFTI, useRaidData, useRaidBosses, useExpectedYield } from '../contracts/raid'
 
 // TODO: Boss table for calculating your CFTI earnings based on boss
 // TODO: Move inline styles into chakra theme
@@ -58,53 +59,7 @@ const usePartyDPB = (address: string | null | undefined) => {
   }
   return value ? Number(value?.[0]) : 0
 }
-const useRaidBosses = (boss: number | null | undefined) => {
-  const bossNum = boss ? boss : 0
-  const { value, error } =
-    useCall({
-      contract: new Contract(TOKEN_ADDRESS['RAID'], TOKEN_ABI), // instance of called contract
-      method: 'bosses', // Method to be called
-      args: [bossNum], // Method arguments
-    }) ?? {}
-  if (error) {
-    console.error(error.message)
-    return undefined
-  }
-  return value as unknown as RaidBoss
-}
 
-const useRaidData = () => {
-  const { value, error } =
-    useCall({
-      contract: new Contract(TOKEN_ADDRESS['RAID'], TOKEN_ABI), // instance of called contract
-      method: 'getRaidData', // Method to be called
-      args: [], // Method arguments
-    }) ?? {}
-  if (error) {
-    console.error(error.message)
-    return 0
-  }
-
-  // console.log(value)
-  return value?.[0]
-}
-
-const useUnclaimedCFTI = (address: string | null | undefined) => {
-  const { value, error } =
-    useCall(
-      address &&
-        TOKEN_ADDRESS['RAID'] && {
-          contract: new Contract(TOKEN_ADDRESS['RAID'], TOKEN_ABI), // instance of called contract
-          method: 'getPendingRewards', // Method to be called
-          args: [address], // Method arguments
-        }
-    ) ?? {}
-  if (error) {
-    console.error(error.message)
-    return undefined
-  }
-  return value?.[0]
-}
 
 const useCFTIBalance = (address: string | null | undefined) => {
   const { value, error } =
@@ -203,6 +158,7 @@ const Home: NextPage = () => {
   const CFTIBalance = formatUnits(useCFTIBalance(account), CFTI?.decimals)
   const unclaimedCFTI = formatUnits(useUnclaimedCFTI(account), CFTI?.decimals)
   const raidDmg = usePartyDPB(account)
+  const avgYield = useExpectedYield(raidDmg);
   const raidData = useRaidData()
   const raidBoss = useRaidBosses(Number(raidData?.boss))
   const nextSeedBatch = formatUnits(useNextSeedBatch(), -3)
@@ -329,6 +285,7 @@ const Home: NextPage = () => {
           bossHealth={raidData?.health}
           bossMaxHealth={raidData?.maxHealth}
           raidDmg={raidDmg}
+          avgYield={avgYield}
           multiplier={raidBoss?.multiplier}
           unclaimedBalance={unclaimedCFTI}
           tokenBalance={CFTIBalance}

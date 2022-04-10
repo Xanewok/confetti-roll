@@ -7,14 +7,10 @@ export const TOKEN_ADDRESS = {
     "ETHUSD": '0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419'
 }
 
-export const BOSS_TYPES = [
-    "Basic",
-    "Strong",
-    "Epic",
-    "Mythic",
-    "Legendary",
-    "Godly"
-]
+// https://etherscan.io/chart/blocktime
+export const AVG_BLOCK_TIME = 13.5
+// https://etherscan.io/token/0xcfef8857e9c80e3440a823971420f7fa5f62f020
+export const CFTI_DECIMALS = 18
 
 export const TOKEN_ABI = [
     {
